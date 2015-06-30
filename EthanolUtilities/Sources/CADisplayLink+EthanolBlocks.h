@@ -7,11 +7,12 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import <EthanolUtilities/ETHpreprocessorUtils.h>
 
 typedef void (^ ETHDisplayLinkTriggeredBlock)(CADisplayLink * displayLink);
 
 @interface CADisplayLink (EthanolBlocks)
 
-+ (CADisplayLink *)eth_displayLinkWithBlock:(ETHDisplayLinkTriggeredBlock)block;
++ (CADisplayLink *)eth_displayLinkWithBlock:(ETHDisplayLinkTriggeredBlock)block ETH_NEW_METHOD;
 
 @end

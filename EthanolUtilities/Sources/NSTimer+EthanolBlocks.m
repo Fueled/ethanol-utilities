@@ -10,8 +10,14 @@
 
 @implementation NSTimer (EthanolBlocks)
 
-+ (NSTimer *)eth_timerWithTimeInterval:(NSTimeInterval)ti block:(ETHTimerTriggeredBlock)block repeats:(BOOL)repeats {
-  return [NSTimer timerWithTimeInterval:ti target:self selector:@selector(eth_timerTriggered:) userInfo:block repeats:repeats];
++ (NSTimer *)eth_timerWithTimeInterval:(NSTimeInterval)ti block:(ETHTimerTriggeredBlock)block {
+  return [NSTimer timerWithTimeInterval:ti target:self selector:@selector(eth_timerTriggered:) userInfo:block repeats:NO];
+}
+
++ (NSTimer *)eth_scheduledTimerWithTimeInterval:(NSTimeInterval)ti block:(ETHTimerTriggeredBlock)block {
+  NSTimer * timer = [self eth_timerWithTimeInterval:ti block:block];
+  [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+  return timer;
 }
 
 + (void)eth_timerTriggered:(NSTimer *)timer {
