@@ -26,7 +26,6 @@
 		F47358991B443DAB007688EC /* NSString+EthanolUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F47358861B443DAB007688EC /* NSString+EthanolUtils.m */; };
 		F473589A1B443DAB007688EC /* NSTimer+EthanolBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = F47358871B443DAB007688EC /* NSTimer+EthanolBlocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F473589B1B443DAB007688EC /* NSTimer+EthanolBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = F47358881B443DAB007688EC /* NSTimer+EthanolBlocks.m */; };
-		F4C14DFD1B43294C003D1286 /* EthanolUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C14DFC1B43294C003D1286 /* EthanolUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F4C14E041B43294C003D1286 /* EthanolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C14DF91B43294C003D1286 /* EthanolUtilities.framework */; };
 		F4C14E091B43294C003D1286 /* EthanolUtilitiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C14E081B43294C003D1286 /* EthanolUtilitiesTests.m */; };
 /* End PBXBuildFile section */
@@ -152,7 +151,6 @@
 			files = (
 				F47358961B443DAB007688EC /* NSSet+Ethanol.h in Headers */,
 				F47358921B443DAB007688EC /* NSObject+EthanolExecuteOnDealloc.h in Headers */,
-				F4C14DFD1B43294C003D1286 /* EthanolUtilities.h in Headers */,
 				F473589A1B443DAB007688EC /* NSTimer+EthanolBlocks.h in Headers */,
 				F47358901B443DAB007688EC /* NSDictionary+Ethanol.h in Headers */,
 				F47358981B443DAB007688EC /* NSString+EthanolUtils.h in Headers */,
@@ -309,6 +307,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -356,6 +355,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
