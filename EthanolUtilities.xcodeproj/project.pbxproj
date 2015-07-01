@@ -7,28 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F47358891B443DAB007688EC /* CADisplayLink+EthanolBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = F47358761B443DAB007688EC /* CADisplayLink+EthanolBlocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F473588A1B443DAB007688EC /* CADisplayLink+EthanolBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = F47358771B443DAB007688EC /* CADisplayLink+EthanolBlocks.m */; };
+		F473588B1B443DAB007688EC /* EthanolArrayUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47358781B443DAB007688EC /* EthanolArrayUtilities.swift */; };
+		F473588C1B443DAB007688EC /* EthanolSwiftHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47358791B443DAB007688EC /* EthanolSwiftHelpers.swift */; };
+		F473588D1B443DAB007688EC /* ETHPreprocessorUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = F473587A1B443DAB007688EC /* ETHPreprocessorUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F473588E1B443DAB007688EC /* NSArray+Ethanol.h in Headers */ = {isa = PBXBuildFile; fileRef = F473587B1B443DAB007688EC /* NSArray+Ethanol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F473588F1B443DAB007688EC /* NSArray+Ethanol.m in Sources */ = {isa = PBXBuildFile; fileRef = F473587C1B443DAB007688EC /* NSArray+Ethanol.m */; };
+		F47358901B443DAB007688EC /* NSDictionary+Ethanol.h in Headers */ = {isa = PBXBuildFile; fileRef = F473587D1B443DAB007688EC /* NSDictionary+Ethanol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F47358911B443DAB007688EC /* NSDictionary+Ethanol.m in Sources */ = {isa = PBXBuildFile; fileRef = F473587E1B443DAB007688EC /* NSDictionary+Ethanol.m */; };
+		F47358921B443DAB007688EC /* NSObject+EthanolExecuteOnDealloc.h in Headers */ = {isa = PBXBuildFile; fileRef = F473587F1B443DAB007688EC /* NSObject+EthanolExecuteOnDealloc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F47358931B443DAB007688EC /* NSObject+EthanolExecuteOnDealloc.m in Sources */ = {isa = PBXBuildFile; fileRef = F47358801B443DAB007688EC /* NSObject+EthanolExecuteOnDealloc.m */; };
+		F47358941B443DAB007688EC /* NSObject+EthanolSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = F47358811B443DAB007688EC /* NSObject+EthanolSwizzling.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F47358951B443DAB007688EC /* NSObject+EthanolSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = F47358821B443DAB007688EC /* NSObject+EthanolSwizzling.m */; };
+		F47358961B443DAB007688EC /* NSSet+Ethanol.h in Headers */ = {isa = PBXBuildFile; fileRef = F47358831B443DAB007688EC /* NSSet+Ethanol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F47358971B443DAB007688EC /* NSSet+Ethanol.m in Sources */ = {isa = PBXBuildFile; fileRef = F47358841B443DAB007688EC /* NSSet+Ethanol.m */; };
+		F47358981B443DAB007688EC /* NSString+EthanolUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = F47358851B443DAB007688EC /* NSString+EthanolUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F47358991B443DAB007688EC /* NSString+EthanolUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F47358861B443DAB007688EC /* NSString+EthanolUtils.m */; };
+		F473589A1B443DAB007688EC /* NSTimer+EthanolBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = F47358871B443DAB007688EC /* NSTimer+EthanolBlocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F473589B1B443DAB007688EC /* NSTimer+EthanolBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = F47358881B443DAB007688EC /* NSTimer+EthanolBlocks.m */; };
 		F4C14DFD1B43294C003D1286 /* EthanolUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C14DFC1B43294C003D1286 /* EthanolUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F4C14E041B43294C003D1286 /* EthanolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C14DF91B43294C003D1286 /* EthanolUtilities.framework */; };
 		F4C14E091B43294C003D1286 /* EthanolUtilitiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C14E081B43294C003D1286 /* EthanolUtilitiesTests.m */; };
-		F4C14E261B43295D003D1286 /* CADisplayLink+EthanolBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C14E141B43295D003D1286 /* CADisplayLink+EthanolBlocks.h */; };
-		F4C14E271B43295D003D1286 /* CADisplayLink+EthanolBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C14E151B43295D003D1286 /* CADisplayLink+EthanolBlocks.m */; };
-		F4C14E281B43295D003D1286 /* EthanolArrayUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C14E161B43295D003D1286 /* EthanolArrayUtilities.swift */; };
-		F4C14E291B43295D003D1286 /* EthanolSwiftHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C14E171B43295D003D1286 /* EthanolSwiftHelpers.swift */; };
-		F4C14E2A1B43295D003D1286 /* NSArray+Ethanol.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C14E181B43295D003D1286 /* NSArray+Ethanol.h */; };
-		F4C14E2B1B43295D003D1286 /* NSArray+Ethanol.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C14E191B43295D003D1286 /* NSArray+Ethanol.m */; };
-		F4C14E2C1B43295D003D1286 /* NSDictionary+Ethanol.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C14E1A1B43295D003D1286 /* NSDictionary+Ethanol.h */; };
-		F4C14E2D1B43295D003D1286 /* NSDictionary+Ethanol.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C14E1B1B43295D003D1286 /* NSDictionary+Ethanol.m */; };
-		F4C14E2E1B43295D003D1286 /* NSObject+EthanolExecuteOnDealloc.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C14E1C1B43295D003D1286 /* NSObject+EthanolExecuteOnDealloc.h */; };
-		F4C14E2F1B43295D003D1286 /* NSObject+EthanolExecuteOnDealloc.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C14E1D1B43295D003D1286 /* NSObject+EthanolExecuteOnDealloc.m */; };
-		F4C14E301B43295D003D1286 /* NSObject+EthanolSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C14E1E1B43295D003D1286 /* NSObject+EthanolSwizzling.h */; };
-		F4C14E311B43295D003D1286 /* NSObject+EthanolSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C14E1F1B43295D003D1286 /* NSObject+EthanolSwizzling.m */; };
-		F4C14E321B43295D003D1286 /* NSSet+Ethanol.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C14E201B43295D003D1286 /* NSSet+Ethanol.h */; };
-		F4C14E331B43295D003D1286 /* NSSet+Ethanol.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C14E211B43295D003D1286 /* NSSet+Ethanol.m */; };
-		F4C14E341B43295D003D1286 /* NSString+EthanolUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C14E221B43295D003D1286 /* NSString+EthanolUtils.h */; };
-		F4C14E351B43295D003D1286 /* NSString+EthanolUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C14E231B43295D003D1286 /* NSString+EthanolUtils.m */; };
-		F4C14E361B43295D003D1286 /* NSTimer+EthanolBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C14E241B43295D003D1286 /* NSTimer+EthanolBlocks.h */; };
-		F4C14E371B43295D003D1286 /* NSTimer+EthanolBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C14E251B43295D003D1286 /* NSTimer+EthanolBlocks.m */; };
-		F4C14E391B4329A4003D1286 /* ETHPreprocessorUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C14E381B4329A4003D1286 /* ETHPreprocessorUtils.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,31 +42,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F47358761B443DAB007688EC /* CADisplayLink+EthanolBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CADisplayLink+EthanolBlocks.h"; sourceTree = "<group>"; };
+		F47358771B443DAB007688EC /* CADisplayLink+EthanolBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CADisplayLink+EthanolBlocks.m"; sourceTree = "<group>"; };
+		F47358781B443DAB007688EC /* EthanolArrayUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthanolArrayUtilities.swift; sourceTree = "<group>"; };
+		F47358791B443DAB007688EC /* EthanolSwiftHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthanolSwiftHelpers.swift; sourceTree = "<group>"; };
+		F473587A1B443DAB007688EC /* ETHPreprocessorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETHPreprocessorUtils.h; sourceTree = "<group>"; };
+		F473587B1B443DAB007688EC /* NSArray+Ethanol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Ethanol.h"; sourceTree = "<group>"; };
+		F473587C1B443DAB007688EC /* NSArray+Ethanol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Ethanol.m"; sourceTree = "<group>"; };
+		F473587D1B443DAB007688EC /* NSDictionary+Ethanol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Ethanol.h"; sourceTree = "<group>"; };
+		F473587E1B443DAB007688EC /* NSDictionary+Ethanol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Ethanol.m"; sourceTree = "<group>"; };
+		F473587F1B443DAB007688EC /* NSObject+EthanolExecuteOnDealloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+EthanolExecuteOnDealloc.h"; sourceTree = "<group>"; };
+		F47358801B443DAB007688EC /* NSObject+EthanolExecuteOnDealloc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+EthanolExecuteOnDealloc.m"; sourceTree = "<group>"; };
+		F47358811B443DAB007688EC /* NSObject+EthanolSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+EthanolSwizzling.h"; sourceTree = "<group>"; };
+		F47358821B443DAB007688EC /* NSObject+EthanolSwizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+EthanolSwizzling.m"; sourceTree = "<group>"; };
+		F47358831B443DAB007688EC /* NSSet+Ethanol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+Ethanol.h"; sourceTree = "<group>"; };
+		F47358841B443DAB007688EC /* NSSet+Ethanol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+Ethanol.m"; sourceTree = "<group>"; };
+		F47358851B443DAB007688EC /* NSString+EthanolUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EthanolUtils.h"; sourceTree = "<group>"; };
+		F47358861B443DAB007688EC /* NSString+EthanolUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EthanolUtils.m"; sourceTree = "<group>"; };
+		F47358871B443DAB007688EC /* NSTimer+EthanolBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+EthanolBlocks.h"; sourceTree = "<group>"; };
+		F47358881B443DAB007688EC /* NSTimer+EthanolBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+EthanolBlocks.m"; sourceTree = "<group>"; };
 		F4C14DF91B43294C003D1286 /* EthanolUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EthanolUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C14DFC1B43294C003D1286 /* EthanolUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EthanolUtilities.h; sourceTree = "<group>"; };
 		F4C14DFE1B43294C003D1286 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4C14E031B43294C003D1286 /* EthanolUtilitiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EthanolUtilitiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C14E081B43294C003D1286 /* EthanolUtilitiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EthanolUtilitiesTests.m; sourceTree = "<group>"; };
 		F4C14E0A1B43294C003D1286 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F4C14E141B43295D003D1286 /* CADisplayLink+EthanolBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CADisplayLink+EthanolBlocks.h"; sourceTree = "<group>"; };
-		F4C14E151B43295D003D1286 /* CADisplayLink+EthanolBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CADisplayLink+EthanolBlocks.m"; sourceTree = "<group>"; };
-		F4C14E161B43295D003D1286 /* EthanolArrayUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthanolArrayUtilities.swift; sourceTree = "<group>"; };
-		F4C14E171B43295D003D1286 /* EthanolSwiftHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthanolSwiftHelpers.swift; sourceTree = "<group>"; };
-		F4C14E181B43295D003D1286 /* NSArray+Ethanol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Ethanol.h"; sourceTree = "<group>"; };
-		F4C14E191B43295D003D1286 /* NSArray+Ethanol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Ethanol.m"; sourceTree = "<group>"; };
-		F4C14E1A1B43295D003D1286 /* NSDictionary+Ethanol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Ethanol.h"; sourceTree = "<group>"; };
-		F4C14E1B1B43295D003D1286 /* NSDictionary+Ethanol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Ethanol.m"; sourceTree = "<group>"; };
-		F4C14E1C1B43295D003D1286 /* NSObject+EthanolExecuteOnDealloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+EthanolExecuteOnDealloc.h"; sourceTree = "<group>"; };
-		F4C14E1D1B43295D003D1286 /* NSObject+EthanolExecuteOnDealloc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+EthanolExecuteOnDealloc.m"; sourceTree = "<group>"; };
-		F4C14E1E1B43295D003D1286 /* NSObject+EthanolSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+EthanolSwizzling.h"; sourceTree = "<group>"; };
-		F4C14E1F1B43295D003D1286 /* NSObject+EthanolSwizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+EthanolSwizzling.m"; sourceTree = "<group>"; };
-		F4C14E201B43295D003D1286 /* NSSet+Ethanol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+Ethanol.h"; sourceTree = "<group>"; };
-		F4C14E211B43295D003D1286 /* NSSet+Ethanol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+Ethanol.m"; sourceTree = "<group>"; };
-		F4C14E221B43295D003D1286 /* NSString+EthanolUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EthanolUtils.h"; sourceTree = "<group>"; };
-		F4C14E231B43295D003D1286 /* NSString+EthanolUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EthanolUtils.m"; sourceTree = "<group>"; };
-		F4C14E241B43295D003D1286 /* NSTimer+EthanolBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+EthanolBlocks.h"; sourceTree = "<group>"; };
-		F4C14E251B43295D003D1286 /* NSTimer+EthanolBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+EthanolBlocks.m"; sourceTree = "<group>"; };
-		F4C14E381B4329A4003D1286 /* ETHPreprocessorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETHPreprocessorUtils.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +109,26 @@
 		F4C14DFB1B43294C003D1286 /* EthanolUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				F4C14E131B43295D003D1286 /* Sources */,
 				F4C14DFC1B43294C003D1286 /* EthanolUtilities.h */,
+				F47358761B443DAB007688EC /* CADisplayLink+EthanolBlocks.h */,
+				F47358771B443DAB007688EC /* CADisplayLink+EthanolBlocks.m */,
+				F47358781B443DAB007688EC /* EthanolArrayUtilities.swift */,
+				F47358791B443DAB007688EC /* EthanolSwiftHelpers.swift */,
+				F473587A1B443DAB007688EC /* ETHPreprocessorUtils.h */,
+				F473587B1B443DAB007688EC /* NSArray+Ethanol.h */,
+				F473587C1B443DAB007688EC /* NSArray+Ethanol.m */,
+				F473587D1B443DAB007688EC /* NSDictionary+Ethanol.h */,
+				F473587E1B443DAB007688EC /* NSDictionary+Ethanol.m */,
+				F473587F1B443DAB007688EC /* NSObject+EthanolExecuteOnDealloc.h */,
+				F47358801B443DAB007688EC /* NSObject+EthanolExecuteOnDealloc.m */,
+				F47358811B443DAB007688EC /* NSObject+EthanolSwizzling.h */,
+				F47358821B443DAB007688EC /* NSObject+EthanolSwizzling.m */,
+				F47358831B443DAB007688EC /* NSSet+Ethanol.h */,
+				F47358841B443DAB007688EC /* NSSet+Ethanol.m */,
+				F47358851B443DAB007688EC /* NSString+EthanolUtils.h */,
+				F47358861B443DAB007688EC /* NSString+EthanolUtils.m */,
+				F47358871B443DAB007688EC /* NSTimer+EthanolBlocks.h */,
+				F47358881B443DAB007688EC /* NSTimer+EthanolBlocks.m */,
 				F4C14DFE1B43294C003D1286 /* Info.plist */,
 			);
 			path = EthanolUtilities;
@@ -125,32 +143,6 @@
 			path = EthanolUtilitiesTests;
 			sourceTree = "<group>";
 		};
-		F4C14E131B43295D003D1286 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				F4C14E141B43295D003D1286 /* CADisplayLink+EthanolBlocks.h */,
-				F4C14E151B43295D003D1286 /* CADisplayLink+EthanolBlocks.m */,
-				F4C14E161B43295D003D1286 /* EthanolArrayUtilities.swift */,
-				F4C14E171B43295D003D1286 /* EthanolSwiftHelpers.swift */,
-				F4C14E381B4329A4003D1286 /* ETHPreprocessorUtils.h */,
-				F4C14E181B43295D003D1286 /* NSArray+Ethanol.h */,
-				F4C14E191B43295D003D1286 /* NSArray+Ethanol.m */,
-				F4C14E1A1B43295D003D1286 /* NSDictionary+Ethanol.h */,
-				F4C14E1B1B43295D003D1286 /* NSDictionary+Ethanol.m */,
-				F4C14E1C1B43295D003D1286 /* NSObject+EthanolExecuteOnDealloc.h */,
-				F4C14E1D1B43295D003D1286 /* NSObject+EthanolExecuteOnDealloc.m */,
-				F4C14E1E1B43295D003D1286 /* NSObject+EthanolSwizzling.h */,
-				F4C14E1F1B43295D003D1286 /* NSObject+EthanolSwizzling.m */,
-				F4C14E201B43295D003D1286 /* NSSet+Ethanol.h */,
-				F4C14E211B43295D003D1286 /* NSSet+Ethanol.m */,
-				F4C14E221B43295D003D1286 /* NSString+EthanolUtils.h */,
-				F4C14E231B43295D003D1286 /* NSString+EthanolUtils.m */,
-				F4C14E241B43295D003D1286 /* NSTimer+EthanolBlocks.h */,
-				F4C14E251B43295D003D1286 /* NSTimer+EthanolBlocks.m */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -158,16 +150,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4C14E361B43295D003D1286 /* NSTimer+EthanolBlocks.h in Headers */,
-				F4C14E321B43295D003D1286 /* NSSet+Ethanol.h in Headers */,
-				F4C14E2E1B43295D003D1286 /* NSObject+EthanolExecuteOnDealloc.h in Headers */,
+				F47358961B443DAB007688EC /* NSSet+Ethanol.h in Headers */,
+				F47358921B443DAB007688EC /* NSObject+EthanolExecuteOnDealloc.h in Headers */,
 				F4C14DFD1B43294C003D1286 /* EthanolUtilities.h in Headers */,
-				F4C14E301B43295D003D1286 /* NSObject+EthanolSwizzling.h in Headers */,
-				F4C14E341B43295D003D1286 /* NSString+EthanolUtils.h in Headers */,
-				F4C14E2C1B43295D003D1286 /* NSDictionary+Ethanol.h in Headers */,
-				F4C14E391B4329A4003D1286 /* ETHPreprocessorUtils.h in Headers */,
-				F4C14E261B43295D003D1286 /* CADisplayLink+EthanolBlocks.h in Headers */,
-				F4C14E2A1B43295D003D1286 /* NSArray+Ethanol.h in Headers */,
+				F473589A1B443DAB007688EC /* NSTimer+EthanolBlocks.h in Headers */,
+				F47358901B443DAB007688EC /* NSDictionary+Ethanol.h in Headers */,
+				F47358981B443DAB007688EC /* NSString+EthanolUtils.h in Headers */,
+				F473588E1B443DAB007688EC /* NSArray+Ethanol.h in Headers */,
+				F47358891B443DAB007688EC /* CADisplayLink+EthanolBlocks.h in Headers */,
+				F47358941B443DAB007688EC /* NSObject+EthanolSwizzling.h in Headers */,
+				F473588D1B443DAB007688EC /* ETHPreprocessorUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +208,7 @@
 		F4C14DF01B43294C003D1286 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Stephane Copin";
 				TargetAttributes = {
@@ -267,16 +260,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4C14E291B43295D003D1286 /* EthanolSwiftHelpers.swift in Sources */,
-				F4C14E311B43295D003D1286 /* NSObject+EthanolSwizzling.m in Sources */,
-				F4C14E2F1B43295D003D1286 /* NSObject+EthanolExecuteOnDealloc.m in Sources */,
-				F4C14E2D1B43295D003D1286 /* NSDictionary+Ethanol.m in Sources */,
-				F4C14E281B43295D003D1286 /* EthanolArrayUtilities.swift in Sources */,
-				F4C14E331B43295D003D1286 /* NSSet+Ethanol.m in Sources */,
-				F4C14E2B1B43295D003D1286 /* NSArray+Ethanol.m in Sources */,
-				F4C14E351B43295D003D1286 /* NSString+EthanolUtils.m in Sources */,
-				F4C14E371B43295D003D1286 /* NSTimer+EthanolBlocks.m in Sources */,
-				F4C14E271B43295D003D1286 /* CADisplayLink+EthanolBlocks.m in Sources */,
+				F473588C1B443DAB007688EC /* EthanolSwiftHelpers.swift in Sources */,
+				F47358951B443DAB007688EC /* NSObject+EthanolSwizzling.m in Sources */,
+				F47358931B443DAB007688EC /* NSObject+EthanolExecuteOnDealloc.m in Sources */,
+				F47358911B443DAB007688EC /* NSDictionary+Ethanol.m in Sources */,
+				F473588B1B443DAB007688EC /* EthanolArrayUtilities.swift in Sources */,
+				F47358971B443DAB007688EC /* NSSet+Ethanol.m in Sources */,
+				F473588F1B443DAB007688EC /* NSArray+Ethanol.m in Sources */,
+				F47358991B443DAB007688EC /* NSString+EthanolUtils.m in Sources */,
+				F473589B1B443DAB007688EC /* NSTimer+EthanolBlocks.m in Sources */,
+				F473588A1B443DAB007688EC /* CADisplayLink+EthanolBlocks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +309,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -336,6 +328,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -363,7 +356,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -377,6 +369,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -390,6 +383,7 @@
 		F4C14E0E1B43294C003D1286 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -400,12 +394,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.fueled.EthanolUtilities;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		F4C14E0F1B43294C003D1286 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
