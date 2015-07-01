@@ -234,7 +234,9 @@ static char firstLetterLowercase ## propertyNameWithoutFirstLetter ## Key; \
   9,8,7,6,5,4,3,2,1,0
 
 #define ETH_INIT_METHOD __attribute__((objc_method_family(init)))
+#define ETH_NEW_METHOD __attribute__((objc_method_family(new)))
 #define ETH_COPY_METHOD __attribute__((objc_method_family(copy)))
+#define ETH_MUTABLECOPY_METHOD __attribute__((objc_method_family(mutableCopy)))
 
 #define ETH_SET_BIT(var, bit) ((var) | (1 << (bit)))
 #define ETH_UNSET_BIT(var, bit) ((var) & ~(1 << (bit)))
