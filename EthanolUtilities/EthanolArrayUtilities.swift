@@ -18,7 +18,7 @@ extension SequenceType {
 }
 
 extension Array {
-  public func keepRange(range: Range<Int>) -> Array<T> {
+  public func keepRange(range: Range<Int>) -> Array<Element> {
     var array = self
     array.keepRangeInPlace(range)
     return array
