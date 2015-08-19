@@ -32,14 +32,15 @@ static char ETHInternalDeallocExecuterKey;
 
 - (void)eth_performBlockOnDealloc:(ETHPerformOnDeallocBlock)deallocBlock {
   ETHInternalDeallocExecuter * deallocExecuter = objc_getAssociatedObject(self, &ETHInternalDeallocExecuterKey);
-  if(deallocExecuter == nil && deallocBlock != nil) {
+  if(deallocBlock != nil) {
+    if(deallocExecuter != nil) {
+      deallocExecuter.deallocBlock = nil;
+    }
     deallocExecuter = [[ETHInternalDeallocExecuter alloc] init];
     deallocExecuter.object = self;
     deallocExecuter.deallocBlock = deallocBlock;
     
     objc_setAssociatedObject(self, &ETHInternalDeallocExecuterKey, deallocExecuter, OBJC_ASSOCIATION_RETAIN);
-  } else if(deallocExecuter != nil) {
-    deallocExecuter.deallocBlock = deallocBlock;
   } else if(deallocBlock == nil) {
     deallocExecuter.deallocBlock = nil;
     objc_setAssociatedObject(self, &ETHInternalDeallocExecuterKey, nil, OBJC_ASSOCIATION_ASSIGN);

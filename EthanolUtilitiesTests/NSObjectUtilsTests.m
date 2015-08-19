@@ -67,6 +67,38 @@
   [self waitForExpectationsWithTimeout:0.0 handler:nil];
 }
 
+- (void)testExecuteOnDeallocNilBlock {
+  XCTestExpectation * expectation = [self expectationWithDescription:@"Testing Execute On Dealloc method"];
+  {
+    NSObject * object = [[NSObject alloc] init];
+    [object eth_performBlockOnDealloc:^(id object) {
+      XCTFail();
+    }];
+    [object eth_performBlockOnDealloc:nil];
+  }
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [expectation fulfill];
+  });
+  [self waitForExpectationsWithTimeout:0.1 handler:nil];
+}
+
+- (void)testExecuteOnDeallocNewBlock {
+  XCTestExpectation * expectation = [self expectationWithDescription:@"Testing Execute On Dealloc method"];
+  {
+    NSObject * object = [[NSObject alloc] init];
+    [object eth_performBlockOnDealloc:^(id object) {
+      XCTFail();
+    }];
+    [object eth_performBlockOnDealloc:^(id object) {
+      XCTAssertTrue(YES);
+    }];
+  }
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [expectation fulfill];
+  });
+  [self waitForExpectationsWithTimeout:0.1 handler:nil];
+}
+
 - (void)testMethodSwizzling {
   XCTAssertEqual([[[SwizzlingTestClass alloc] init] testMethod], 123);
   
