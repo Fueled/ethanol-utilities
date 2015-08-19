@@ -46,8 +46,4 @@ static char ETHInternalDeallocExecuterKey;
   }
 }
 
-- (void)performBlockOnDealloc:(ETHPerformOnDeallocBlock)deallocBlock {
-  return [self eth_performBlockOnDealloc:deallocBlock];
-}
-
 @end
