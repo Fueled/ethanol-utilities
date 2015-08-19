@@ -19,7 +19,6 @@
     id value = va_arg(args, id);
     if(key != nil && value != nil) {
       dictionary[key] = value;
-    } else {
     }
     if(++i < keyValueNumber) {
       key = va_arg(args, id);

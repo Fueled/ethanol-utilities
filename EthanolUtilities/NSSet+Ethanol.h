@@ -10,15 +10,12 @@
 
 @interface NSSet (Ethanol)
 
-+ (instancetype)eth_setWithObjectNumber:(NSUInteger)objectNumber objects:(id)firstObject, ... __deprecated_msg("Please do not use this method directly. Use the macro ETHSET instead.");
++ (instancetype)eth_setWithObjectNumber:(NSUInteger)objectNumber objects:(id)firstObject, ...;
 
 @end
 
 #define ETHSET_(...) \
-  _Pragma("clang diagnostic push") \
-  _Pragma("clang diagnostic ignored \"-Wdeprecated-declarations\"") \
   [NSSet eth_setWithObjectNumber:ETH_NARG(__VA_ARGS__) objects:__VA_ARGS__] \
-  _Pragma("clang diagnostic pop")
 
 /**
  *  Create a set that allows nil values which will be ignored.

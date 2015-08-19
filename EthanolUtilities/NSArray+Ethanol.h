@@ -11,15 +11,12 @@
 
 @interface NSArray (Ethanol)
 
-+ (instancetype)eth_arrayWithObjectNumber:(NSUInteger)objectNumber objects:(id)firstObject, ... __deprecated_msg("Please do not use this method directly. Use the macro ETHARRAY instead.");
++ (instancetype)eth_arrayWithObjectNumber:(NSUInteger)objectNumber objects:(id)firstObject, ...;
 
 @end
 
 #define ETHARRAY_(...) \
-  _Pragma("clang diagnostic push") \
-  _Pragma("clang diagnostic ignored \"-Wdeprecated-declarations\"") \
   [NSArray eth_arrayWithObjectNumber:ETH_NARG(__VA_ARGS__) objects:__VA_ARGS__] \
-  _Pragma("clang diagnostic pop")
 
 /**
  *  Create an array that allows nil values which will be ignored.
