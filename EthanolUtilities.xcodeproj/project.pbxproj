@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F42307CD1B4C2639007425D4 /* EthanolUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C14DFC1B43294C003D1286 /* EthanolUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F45ADFDF1B850A65003842E1 /* NSStringUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F45ADFDE1B850A65003842E1 /* NSStringUtilsTests.m */; };
 		F47358891B443DAB007688EC /* CADisplayLink+EthanolBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = F47358761B443DAB007688EC /* CADisplayLink+EthanolBlocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F473588A1B443DAB007688EC /* CADisplayLink+EthanolBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = F47358771B443DAB007688EC /* CADisplayLink+EthanolBlocks.m */; };
 		F473588B1B443DAB007688EC /* EthanolArrayUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47358781B443DAB007688EC /* EthanolArrayUtilities.swift */; };
@@ -28,7 +29,6 @@
 		F473589A1B443DAB007688EC /* NSTimer+EthanolBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = F47358871B443DAB007688EC /* NSTimer+EthanolBlocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F473589B1B443DAB007688EC /* NSTimer+EthanolBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = F47358881B443DAB007688EC /* NSTimer+EthanolBlocks.m */; };
 		F4C14E041B43294C003D1286 /* EthanolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C14DF91B43294C003D1286 /* EthanolUtilities.framework */; };
-		F4C14E091B43294C003D1286 /* EthanolUtilitiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C14E081B43294C003D1286 /* EthanolUtilitiesTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F45ADFDE1B850A65003842E1 /* NSStringUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringUtilsTests.m; sourceTree = "<group>"; };
 		F47358761B443DAB007688EC /* CADisplayLink+EthanolBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CADisplayLink+EthanolBlocks.h"; sourceTree = "<group>"; };
 		F47358771B443DAB007688EC /* CADisplayLink+EthanolBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CADisplayLink+EthanolBlocks.m"; sourceTree = "<group>"; };
 		F47358781B443DAB007688EC /* EthanolArrayUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthanolArrayUtilities.swift; sourceTree = "<group>"; };
@@ -65,7 +66,6 @@
 		F4C14DFC1B43294C003D1286 /* EthanolUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EthanolUtilities.h; sourceTree = "<group>"; };
 		F4C14DFE1B43294C003D1286 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4C14E031B43294C003D1286 /* EthanolUtilitiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EthanolUtilitiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4C14E081B43294C003D1286 /* EthanolUtilitiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EthanolUtilitiesTests.m; sourceTree = "<group>"; };
 		F4C14E0A1B43294C003D1286 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,8 +137,8 @@
 		F4C14E071B43294C003D1286 /* EthanolUtilitiesTests */ = {
 			isa = PBXGroup;
 			children = (
-				F4C14E081B43294C003D1286 /* EthanolUtilitiesTests.m */,
 				F4C14E0A1B43294C003D1286 /* Info.plist */,
+				F45ADFDE1B850A65003842E1 /* NSStringUtilsTests.m */,
 			);
 			path = EthanolUtilitiesTests;
 			sourceTree = "<group>";
@@ -277,7 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4C14E091B43294C003D1286 /* EthanolUtilitiesTests.m in Sources */,
+				F45ADFDF1B850A65003842E1 /* NSStringUtilsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
