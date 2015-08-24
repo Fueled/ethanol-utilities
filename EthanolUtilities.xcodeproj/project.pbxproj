@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		F42307CD1B4C2639007425D4 /* EthanolUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C14DFC1B43294C003D1286 /* EthanolUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F45ADFDF1B850A65003842E1 /* NSStringUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F45ADFDE1B850A65003842E1 /* NSStringUtilsTests.m */; };
+		F45ADFE11B851678003842E1 /* CollectionHelpersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F45ADFE01B851678003842E1 /* CollectionHelpersTests.m */; };
+		F45ADFE31B8518E3003842E1 /* NSObjectUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F45ADFE21B8518E3003842E1 /* NSObjectUtilsTests.m */; };
+		F45ADFEA1B85243B003842E1 /* SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45ADFE91B85243B003842E1 /* SwiftTests.swift */; };
+		F45ADFEC1B852635003842E1 /* RunLoopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F45ADFEB1B852635003842E1 /* RunLoopTests.m */; };
 		F47358891B443DAB007688EC /* CADisplayLink+EthanolBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = F47358761B443DAB007688EC /* CADisplayLink+EthanolBlocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F473588A1B443DAB007688EC /* CADisplayLink+EthanolBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = F47358771B443DAB007688EC /* CADisplayLink+EthanolBlocks.m */; };
 		F473588B1B443DAB007688EC /* EthanolArrayUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47358781B443DAB007688EC /* EthanolArrayUtilities.swift */; };
@@ -28,7 +33,6 @@
 		F473589A1B443DAB007688EC /* NSTimer+EthanolBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = F47358871B443DAB007688EC /* NSTimer+EthanolBlocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F473589B1B443DAB007688EC /* NSTimer+EthanolBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = F47358881B443DAB007688EC /* NSTimer+EthanolBlocks.m */; };
 		F4C14E041B43294C003D1286 /* EthanolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C14DF91B43294C003D1286 /* EthanolUtilities.framework */; };
-		F4C14E091B43294C003D1286 /* EthanolUtilitiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C14E081B43294C003D1286 /* EthanolUtilitiesTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F45ADFDE1B850A65003842E1 /* NSStringUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringUtilsTests.m; sourceTree = "<group>"; };
+		F45ADFE01B851678003842E1 /* CollectionHelpersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionHelpersTests.m; sourceTree = "<group>"; };
+		F45ADFE21B8518E3003842E1 /* NSObjectUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectUtilsTests.m; sourceTree = "<group>"; };
+		F45ADFE91B85243B003842E1 /* SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftTests.swift; sourceTree = "<group>"; };
+		F45ADFEB1B852635003842E1 /* RunLoopTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunLoopTests.m; sourceTree = "<group>"; };
 		F47358761B443DAB007688EC /* CADisplayLink+EthanolBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CADisplayLink+EthanolBlocks.h"; sourceTree = "<group>"; };
 		F47358771B443DAB007688EC /* CADisplayLink+EthanolBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CADisplayLink+EthanolBlocks.m"; sourceTree = "<group>"; };
 		F47358781B443DAB007688EC /* EthanolArrayUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthanolArrayUtilities.swift; sourceTree = "<group>"; };
@@ -65,7 +74,6 @@
 		F4C14DFC1B43294C003D1286 /* EthanolUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EthanolUtilities.h; sourceTree = "<group>"; };
 		F4C14DFE1B43294C003D1286 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4C14E031B43294C003D1286 /* EthanolUtilitiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EthanolUtilitiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4C14E081B43294C003D1286 /* EthanolUtilitiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EthanolUtilitiesTests.m; sourceTree = "<group>"; };
 		F4C14E0A1B43294C003D1286 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,8 +145,12 @@
 		F4C14E071B43294C003D1286 /* EthanolUtilitiesTests */ = {
 			isa = PBXGroup;
 			children = (
-				F4C14E081B43294C003D1286 /* EthanolUtilitiesTests.m */,
 				F4C14E0A1B43294C003D1286 /* Info.plist */,
+				F45ADFDE1B850A65003842E1 /* NSStringUtilsTests.m */,
+				F45ADFE01B851678003842E1 /* CollectionHelpersTests.m */,
+				F45ADFE21B8518E3003842E1 /* NSObjectUtilsTests.m */,
+				F45ADFEB1B852635003842E1 /* RunLoopTests.m */,
+				F45ADFE91B85243B003842E1 /* SwiftTests.swift */,
 			);
 			path = EthanolUtilitiesTests;
 			sourceTree = "<group>";
@@ -277,7 +289,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4C14E091B43294C003D1286 /* EthanolUtilitiesTests.m in Sources */,
+				F45ADFDF1B850A65003842E1 /* NSStringUtilsTests.m in Sources */,
+				F45ADFEC1B852635003842E1 /* RunLoopTests.m in Sources */,
+				F45ADFEA1B85243B003842E1 /* SwiftTests.swift in Sources */,
+				F45ADFE11B851678003842E1 /* CollectionHelpersTests.m in Sources */,
+				F45ADFE31B8518E3003842E1 /* NSObjectUtilsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +406,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				INFOPLIST_FILE = EthanolUtilities/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -408,6 +426,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				INFOPLIST_FILE = EthanolUtilities/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -420,16 +440,19 @@
 		F4C14E111B43294C003D1286 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = EthanolUtilitiesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fueled.EthanolUtilitiesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		F4C14E121B43294C003D1286 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = EthanolUtilitiesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fueled.EthanolUtilitiesTests;

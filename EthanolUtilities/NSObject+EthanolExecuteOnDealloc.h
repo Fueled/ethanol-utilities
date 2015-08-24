@@ -15,13 +15,11 @@ typedef void (^ ETHPerformOnDeallocBlock)(id object);
 /**
  *  Perform a block on when an object is dealloc'd.
  *  The object passed as an argument is the object that is being dealloc'd.
- *  This argument is unsafe_unretained, and in case it means that sending any messages to this object might crash.
+ *  This argument is unsafe_unretained, and it means that sending any messages to this object might crash.
  *  This is mainly useful to remove any observers this object may be attached to (KVO/NotificationCenter/etc)
  *
  *  @param deallocBlock Return block to execute on dealloc.
  */
 - (void)eth_performBlockOnDealloc:(ETHPerformOnDeallocBlock)deallocBlock;
-
-- (void)performBlockOnDealloc:(ETHPerformOnDeallocBlock)deallocBlock __deprecated_msg("Please use the eth_ prefixed method instead");
 
 @end
