@@ -28,3 +28,4 @@ FOUNDATION_EXPORT const unsigned char EthanolUtilitiesVersionString[];
 #import <EthanolUtilities/NSTimer+EthanolBlocks.h>
 #import <EthanolUtilities/NSString+EthanolSecurity.h>
 #import <EthanolUtilities/NSData+EthanolSecurity.h>
+#import <EthanolUtilities/BoundingSize.h>

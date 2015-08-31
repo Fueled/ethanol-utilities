@@ -11,6 +11,8 @@
 		0C822EAF1B94F91400CDAB16 /* NSString+EthanolSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C822EAB1B94F91400CDAB16 /* NSString+EthanolSecurity.m */; };
 		0C822EB01B94F91400CDAB16 /* NSData+EthanolSecurity.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C822EAC1B94F91400CDAB16 /* NSData+EthanolSecurity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0C822EB11B94F91400CDAB16 /* NSData+EthanolSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C822EAD1B94F91400CDAB16 /* NSData+EthanolSecurity.m */; };
+		0C822EB51B95098E00CDAB16 /* NSString+BoundingSize.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C822EB31B95098E00CDAB16 /* NSString+BoundingSize.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0C822EB61B95098E00CDAB16 /* NSString+BoundingSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C822EB41B95098E00CDAB16 /* NSString+BoundingSize.m */; };
 		F42307CD1B4C2639007425D4 /* EthanolUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C14DFC1B43294C003D1286 /* EthanolUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F45ADFDF1B850A65003842E1 /* NSStringUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F45ADFDE1B850A65003842E1 /* NSStringUtilsTests.m */; };
 		F45ADFE11B851678003842E1 /* CollectionHelpersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F45ADFE01B851678003842E1 /* CollectionHelpersTests.m */; };
@@ -54,6 +56,8 @@
 		0C822EAB1B94F91400CDAB16 /* NSString+EthanolSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EthanolSecurity.m"; sourceTree = "<group>"; };
 		0C822EAC1B94F91400CDAB16 /* NSData+EthanolSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+EthanolSecurity.h"; sourceTree = "<group>"; };
 		0C822EAD1B94F91400CDAB16 /* NSData+EthanolSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+EthanolSecurity.m"; sourceTree = "<group>"; };
+		0C822EB31B95098E00CDAB16 /* NSString+BoundingSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BoundingSize.h"; sourceTree = "<group>"; };
+		0C822EB41B95098E00CDAB16 /* NSString+BoundingSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BoundingSize.m"; sourceTree = "<group>"; };
 		F45ADFDE1B850A65003842E1 /* NSStringUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringUtilsTests.m; sourceTree = "<group>"; };
 		F45ADFE01B851678003842E1 /* CollectionHelpersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionHelpersTests.m; sourceTree = "<group>"; };
 		F45ADFE21B8518E3003842E1 /* NSObjectUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectUtilsTests.m; sourceTree = "<group>"; };
@@ -149,6 +153,8 @@
 				0C822EAB1B94F91400CDAB16 /* NSString+EthanolSecurity.m */,
 				0C822EAC1B94F91400CDAB16 /* NSData+EthanolSecurity.h */,
 				0C822EAD1B94F91400CDAB16 /* NSData+EthanolSecurity.m */,
+				0C822EB31B95098E00CDAB16 /* NSString+BoundingSize.h */,
+				0C822EB41B95098E00CDAB16 /* NSString+BoundingSize.m */,
 				F4C14DFE1B43294C003D1286 /* Info.plist */,
 			);
 			path = EthanolUtilities;
@@ -179,6 +185,7 @@
 				F473589A1B443DAB007688EC /* NSTimer+EthanolBlocks.h in Headers */,
 				F47358901B443DAB007688EC /* NSDictionary+Ethanol.h in Headers */,
 				F47358981B443DAB007688EC /* NSString+EthanolUtils.h in Headers */,
+				0C822EB51B95098E00CDAB16 /* NSString+BoundingSize.h in Headers */,
 				F473588E1B443DAB007688EC /* NSArray+Ethanol.h in Headers */,
 				F47358891B443DAB007688EC /* CADisplayLink+EthanolBlocks.h in Headers */,
 				0C822EB01B94F91400CDAB16 /* NSData+EthanolSecurity.h in Headers */,
@@ -292,6 +299,7 @@
 				0C822EAF1B94F91400CDAB16 /* NSString+EthanolSecurity.m in Sources */,
 				F47358911B443DAB007688EC /* NSDictionary+Ethanol.m in Sources */,
 				F473588B1B443DAB007688EC /* EthanolArrayUtilities.swift in Sources */,
+				0C822EB61B95098E00CDAB16 /* NSString+BoundingSize.m in Sources */,
 				F47358971B443DAB007688EC /* NSSet+Ethanol.m in Sources */,
 				F473588F1B443DAB007688EC /* NSArray+Ethanol.m in Sources */,
 				0C822EB11B94F91400CDAB16 /* NSData+EthanolSecurity.m in Sources */,
