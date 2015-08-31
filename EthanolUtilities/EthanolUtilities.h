@@ -26,3 +26,5 @@ FOUNDATION_EXPORT const unsigned char EthanolUtilitiesVersionString[];
 #import <EthanolUtilities/NSSet+Ethanol.h>
 #import <EthanolUtilities/NSString+EthanolUtils.h>
 #import <EthanolUtilities/NSTimer+EthanolBlocks.h>
+#import <EthanolUtilities/NSString+EthanolSecurity.h>
+#import <EthanolUtilities/NSData+EthanolSecurity.h>
