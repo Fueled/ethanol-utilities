@@ -31,16 +31,4 @@
   return CGSizeMake(label.frame.size.width, label.frame.size.height);
 }
 
-- (CGSize)boundingSizeWithSize:(UIFont *)font {
-  return [self eth_boundingSizeWithSize:font];
-}
-
-- (CGSize)boundingSizeWithSize:(CGSize)size font:(UIFont *)font {
-  return [self eth_boundingSizeWithSize:size font:font];
-}
-
-- (CGSize)boundingSizeWithSize:(CGSize)size font:(UIFont *)font textAlignment:(NSTextAlignment)textAlignement {
-  return [self eth_boundingSizeWithSize:size font:font textAlignment:textAlignement];
-}
-
 @end
