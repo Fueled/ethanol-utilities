@@ -12,16 +12,10 @@
 
 @implementation NSString (EthanolSecurity)
 
-#define IMPLEMENT_DEPRECATED_SECURITY_METHOD(name) \
-  - (NSString *)name { \
-    return [self eth_ ## name]; \
-  }
-
 #define IMPLEMENT_SECURITY_METHOD(name) \
   - (NSString *)eth_ ## name { \
     return [[self dataUsingEncoding:NSUTF8StringEncoding] eth_ ## name]; \
-  } \
-  IMPLEMENT_DEPRECATED_SECURITY_METHOD(name)
+  } 
 
 IMPLEMENT_SECURITY_METHOD(MD2)
 IMPLEMENT_SECURITY_METHOD(MD4)

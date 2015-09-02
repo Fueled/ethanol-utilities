@@ -11,18 +11,12 @@
 
 @implementation NSData (EthanolSecurity)
 
-#define IMPLEMENT_DEPRECATED_CRYPTO_METHOD(name) \
-  - (NSString *)name { \
-    return [self eth_ ## name]; \
-  }
-
 #define IMPLEMENT_CRYPTO_METHOD(name) \
   - (NSString *)eth_ ## name { \
     unsigned char output[CC_ ## name ## _DIGEST_LENGTH]; \
     CC_ ## name([self bytes], (CC_LONG)[self length], output); \
     return [self toHexString:output length:CC_ ## name ##_DIGEST_LENGTH]; \
-  } \
-  IMPLEMENT_DEPRECATED_CRYPTO_METHOD(name)
+  } 
 
 IMPLEMENT_CRYPTO_METHOD(MD2)
 IMPLEMENT_CRYPTO_METHOD(MD4)
