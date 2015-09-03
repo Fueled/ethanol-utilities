@@ -15,34 +15,45 @@ public typealias ExternalAPICompletionHandler =
   (success: Bool, objects: [AnyObject]?, error: AnyObject?) -> Void
 
 public class ResourceFetcher: NSObject {
-  
-  static let defaultPageLimit = 20
+
+	static let defaultPageLimit = 20
   static let initialPage = 1
   
-  private (set) public var allObjects = [AnyObject]()
+  final private (set) public var allObjects = [AnyObject]()
 
-  private (set) public var isLoading = false
+  final private (set) public var isLoading = false
 
-  private var currentPage = ResourceFetcher.initialPage
+  final private var currentPage = ResourceFetcher.initialPage
   
-  private var pageLimit = ResourceFetcher.defaultPageLimit
+  final private var pageLimit = ResourceFetcher.defaultPageLimit
   
-  private var advanceLoadedObjects: [AnyObject]?
+  final private var advanceLoadedObjects: [AnyObject]?
   
-  private var nextLoadBlock: ResourceFetcherCompletionHandler?
-  
-  // MARK: Initializers
-  init(pageLimit: Int) {
-    self.pageLimit = pageLimit
+  final private var nextLoadBlock: ResourceFetcherCompletionHandler?
+
+	// MARK: Initializer
+	
+	public init(pageLimit: Int = ResourceFetcher.initialPage) {
+		print("things")
+		self.pageLimit = pageLimit
     super.init()
   }
 
-  override convenience init () {
-    self.init(pageLimit: ResourceFetcher.defaultPageLimit)
-  }
+	// MARK: Public Methods
 
-  // MARK: Public Methods
-	public func startFetchingProducts(completionHandler:ResourceFetcherCompletionHandler?) {
+/**
+Start Fetching Products
+
+Calls `fetchPage(:pageLimit:completion)` with the first page and the page-limit specified during initialization.
+
+On successful completion clears the current set of Objects, if any and replaces them with the newly fetched results.
+	
+Then performs the fetch for the next page silently
+
+:param: `completionHandler`	called when the fetch is completed
+
+*/
+	final public func startFetchingProducts(completionHandler:ResourceFetcherCompletionHandler?) {
     if(isLoading) {
       if let completionHandler = completionHandler {
         completionHandler(success:false, hasMoreDataToLoad:true, objects:nil, resourceFetcher:nil, error:nil)
@@ -52,7 +63,7 @@ public class ResourceFetcher: NSObject {
     
     resetAllInfo()
     
-    loadNextPages(ResourceFetcher.initialPage) {
+    loadNextPages() {
 		(success, hasMoreDataToLoad, objects, resourceFetcher, error) in
       let loadedObjects = objects!
       var moreDataToLoad = hasMoreDataToLoad
@@ -73,24 +84,46 @@ public class ResourceFetcher: NSObject {
       }
     }
   }
+/**
+Fetch Next Page
 
-  public func fetchNextPage(completionHandler:ResourceFetcherCompletionHandler? = nil) {
+Calls `fetchPage(:pageLimit:completion)` with the next page to be fetched and cached and the page-limit specified during initialization.
+
+On successful completion clears the current set of Objects, if any and replaces them with the newly fetched results.
+
+Then performs the fetch for the next page silently
+
+:param: `completionHandler`	called when the fetch is completed
+
+*/
+  final public func fetchNextPage(completionHandler:ResourceFetcherCompletionHandler? = nil) {
     fetchNextPage(true, completionHandler: completionHandler)
   }
-  
+
+/**
+Fetches the Next Page from the specified URL.
+
+* Overridden By subclass
+
+:param: `pageNumber`								the page number of the fetching page
+
+:param: `pageLimit`									number of objects per page
+
+:param: `completionHandler`					Completion Handler on success/failure
+
+*/
   public func fetchPage(pageNumber:Int = 1, pageLimit: Int = ResourceFetcher.defaultPageLimit, completionHandler:ExternalAPICompletionHandler?) {
     assertionFailure("This method needs to be implemented in the subclass")
   }
 
   
   // MARK: Private Methods
-  
-  private func resetAllInfo() {
+  final private func resetAllInfo() {
     currentPage = ResourceFetcher.initialPage
     advanceLoadedObjects = nil
   }
 
-  private func fetchNextPage(userInitiated:Bool = false, completionHandler:ResourceFetcherCompletionHandler? = nil) {
+  final private func fetchNextPage(userInitiated:Bool = false, completionHandler:ResourceFetcherCompletionHandler? = nil) {
     if userInitiated {
       /* If user initiated, check if there are advance loaded objects.
         If exists then send loaded objects back, and load next batch.
@@ -116,7 +149,7 @@ public class ResourceFetcher: NSObject {
       }
     }
 
-    self.loadNextPages(1) { (success, hasMoreDataToLoad, objects, resourceFetcher, error) in
+    self.loadNextPages() { (success, hasMoreDataToLoad, objects, resourceFetcher, error) in
       if success {
         //Load complete. Checking Next Block
         if let nextLoadBlock = self.nextLoadBlock {
@@ -147,12 +180,12 @@ public class ResourceFetcher: NSObject {
     }
   }
 
-  private func loadNextPages(numberOfPages:Int = 1, completionHandler:ResourceFetcherCompletionHandler? = nil) {
+  final private func loadNextPages(completionHandler:ResourceFetcherCompletionHandler? = nil) {
     isLoading = true
     
     print("xxxx Fetching Page \(self.currentPage)")
     
-    self.fetchPage(self.currentPage, pageLimit: self.pageLimit * numberOfPages) {
+    self.fetchPage(self.currentPage, pageLimit: self.pageLimit) {
       (success, objects, error) in
       var moreDataToLoad = true
       if success {
@@ -163,7 +196,7 @@ public class ResourceFetcher: NSObject {
           moreDataToLoad = false
         }
         //incremented currentPage
-        self.currentPage += numberOfPages
+        self.currentPage++
       }
       
       //Loading Finished
