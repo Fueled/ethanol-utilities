@@ -46,12 +46,4 @@
  */
 - (NSString *)eth_SHA512;
 
-- (NSString *)MD2 __deprecated_msg("Please use the eth_ prefixed method instead");
-- (NSString *)MD4 __deprecated_msg("Please use the eth_ prefixed method instead");
-- (NSString *)MD5 __deprecated_msg("Please use the eth_ prefixed method instead");
-- (NSString *)SHA1 __deprecated_msg("Please use the eth_ prefixed method instead");
-- (NSString *)SHA256 __deprecated_msg("Please use the eth_ prefixed method instead");
-- (NSString *)SHA384 __deprecated_msg("Please use the eth_ prefixed method instead");
-- (NSString *)SHA512 __deprecated_msg("Please use the eth_ prefixed method instead");
-
 @end
