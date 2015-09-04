@@ -9,6 +9,9 @@
 import XCTest
 import EthanolUtilities
 
+infix operator ~= { precedence 60 }
+infix operator +- { precedence 70 }
+
 class SwiftTests: XCTestCase {
 	func testFindInSequenceFound() {
 		let array = [1, 2, 3, 42, 6, 7]
@@ -36,5 +39,21 @@ class SwiftTests: XCTestCase {
 		}
 		
 		self.waitForExpectationsWithTimeout(0.6, handler: nil)
+	}
+	
+	func testCompareWithDeltaEqualFunction() {
+		XCTAssertTrue(compareWithDelta(5.09, compareTo: 5.0, delta: 0.1))
+	}
+	
+	func testCompareWithDeltaNotEqualFunction() {
+		XCTAssertFalse(compareWithDelta(5.11, compareTo: 5.0, delta: 0.1))
+	}
+	
+	func testCompareWithDeltaEqualOperator() {
+		XCTAssertTrue(5.01 ~= 5.0 +- 0.1)
+	}
+	
+	func testCompareWithDeltaNotEqualOperator() {
+		XCTAssertFalse(5.11 ~= 5.0 +- 0.1)
 	}
 }
