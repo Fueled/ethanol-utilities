@@ -38,6 +38,7 @@
 		F47358991B443DAB007688EC /* NSString+EthanolUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F47358861B443DAB007688EC /* NSString+EthanolUtils.m */; };
 		F473589A1B443DAB007688EC /* NSTimer+EthanolBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = F47358871B443DAB007688EC /* NSTimer+EthanolBlocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F473589B1B443DAB007688EC /* NSTimer+EthanolBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = F47358881B443DAB007688EC /* NSTimer+EthanolBlocks.m */; };
+		F48AA2ED1B99B37B00D45E19 /* BoundingSizeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F48AA2EC1B99B37B00D45E19 /* BoundingSizeTests.m */; settings = {ASSET_TAGS = (); }; };
 		F4C14E041B43294C003D1286 /* EthanolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C14DF91B43294C003D1286 /* EthanolUtilities.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		F47358861B443DAB007688EC /* NSString+EthanolUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EthanolUtils.m"; sourceTree = "<group>"; };
 		F47358871B443DAB007688EC /* NSTimer+EthanolBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+EthanolBlocks.h"; sourceTree = "<group>"; };
 		F47358881B443DAB007688EC /* NSTimer+EthanolBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+EthanolBlocks.m"; sourceTree = "<group>"; };
+		F48AA2EC1B99B37B00D45E19 /* BoundingSizeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoundingSizeTests.m; sourceTree = "<group>"; };
 		F4C14DF91B43294C003D1286 /* EthanolUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EthanolUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C14DFC1B43294C003D1286 /* EthanolUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EthanolUtilities.h; sourceTree = "<group>"; };
 		F4C14DFE1B43294C003D1286 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				F45ADFE21B8518E3003842E1 /* NSObjectUtilsTests.m */,
 				F45ADFEB1B852635003842E1 /* RunLoopTests.m */,
 				F45ADFE91B85243B003842E1 /* SwiftTests.swift */,
+				F48AA2EC1B99B37B00D45E19 /* BoundingSizeTests.m */,
 			);
 			path = EthanolUtilitiesTests;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			files = (
 				F45ADFDF1B850A65003842E1 /* NSStringUtilsTests.m in Sources */,
 				F45ADFEC1B852635003842E1 /* RunLoopTests.m in Sources */,
+				F48AA2ED1B99B37B00D45E19 /* BoundingSizeTests.m in Sources */,
 				F45ADFEA1B85243B003842E1 /* SwiftTests.swift in Sources */,
 				F45ADFE11B851678003842E1 /* CollectionHelpersTests.m in Sources */,
 				F45ADFE31B8518E3003842E1 /* NSObjectUtilsTests.m in Sources */,

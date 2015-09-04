@@ -12,7 +12,7 @@
 
 @implementation NSString (BoundingSize)
 
-- (CGSize)eth_boundingSizeWithSize:(UIFont *)font {
+- (CGSize)eth_boundingSizeWithFont:(UIFont *)font {
   return [self eth_boundingSizeWithSize:CGSizeMake(COMPUTE_BOUND, COMPUTE_BOUND) font:font];
 }
 
