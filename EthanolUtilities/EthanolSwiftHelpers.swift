@@ -21,6 +21,22 @@ public func compareWithDelta<T: SignedNumberType>(value: T, compareTo: T, delta:
 	return abs(value - compareTo) < delta
 }
 
+public func compareWithDelta<T where T: SignedNumberType, T: FloatingPointType>(value: T, compareTo: T, delta: T) -> Bool {
+	if(value.isInfinite && compareTo.isInfinite) {
+		if((value.isSignMinus && !compareTo.isSignMinus) || (!value.isSignMinus && compareTo.isSignMinus)) {
+			return false
+		}
+		return !delta.isInfinite
+	}
+	if(delta.isInfinite) {
+		if(value.isInfinite) {
+			return false
+		}
+		return true
+	}
+	return abs(value - compareTo) < delta
+}
+
 infix operator ~= { precedence 60 }
 infix operator +- { precedence 70 }
 
