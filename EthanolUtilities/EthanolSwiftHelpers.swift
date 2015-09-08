@@ -34,7 +34,7 @@ public func compareWithDelta<T where T: SignedNumberType, T: FloatingPointType>(
 		}
 		return true
 	}
-	return abs(value - compareTo) < delta
+	return abs(value - compareTo) < abs(delta)
 }
 
 infix operator ~= { precedence 60 }
