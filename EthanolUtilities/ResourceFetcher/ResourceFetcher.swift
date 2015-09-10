@@ -9,7 +9,7 @@
 import Foundation
 
 
-public class ResourceFetcher: NSObject {
+@objc public class ResourceFetcher: NSObject {
 
 	public typealias ResourceFetcherCompletionHandler =
 		(success: Bool, hasMoreDataToLoad: Bool, objects: [AnyObject]?,
@@ -25,9 +25,9 @@ public class ResourceFetcher: NSObject {
 
 	final private (set) public var isLoading = false
 
-	final private var currentPage = ResourceFetcher.initialPage
+	final private var currentPage: Int
 
-	final private var pageLimit = ResourceFetcher.defaultPageLimit
+	final private var pageLimit: Int
 
 	final private var advanceLoadedObjects: [AnyObject]?
 
@@ -35,9 +35,10 @@ public class ResourceFetcher: NSObject {
 
 	// MARK: Initializer
 
-	public init(pageLimit: Int = ResourceFetcher.initialPage) {
+	public init(pageLimit: Int = ResourceFetcher.defaultPageLimit) {
 		print("things")
 		self.pageLimit = pageLimit
+		self.currentPage = ResourceFetcher.initialPage
 		super.init()
 	}
 
@@ -55,6 +56,16 @@ public class ResourceFetcher: NSObject {
 	:param: `completionHandler`	called when the fetch is completed
 
 	*/
+
+	public func test() throws -> (resourceFetcher: ResourceFetcher, objects: [AnyObject]?) {
+		let error = ResourceFetcherError()
+		let x = rand() % 2
+		if x == 1 {
+			throw error
+		}
+		return (self, nil)
+	}
+
 	final public func startFetchingProducts(completionHandler:ResourceFetcherCompletionHandler? = nil) {
 		if(isLoading) {
 			if let completionHandler = completionHandler {

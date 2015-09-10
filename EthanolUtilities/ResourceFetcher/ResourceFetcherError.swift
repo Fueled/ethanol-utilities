@@ -8,22 +8,23 @@
 
 import Foundation
 
-public class ResourceFetcherError: NSObject {
+@objc public class ResourceFetcherError: NSObject, ErrorType {
 	static let UnknownErroCode = 500
 	static let UnknownErrorDomain = "Error"
 	static let UnknownErroMessage = "An unknown error occured."
 
-	final public var statusCode: Int = 0
-	final public var domain: String?
-	final public var message: String?
+	final public var code: Int = ResourceFetcherError.UnknownErroCode
+	final public var domain: String = ResourceFetcherError.UnknownErrorDomain
+	final public var message: String = ResourceFetcherError.UnknownErroMessage
 
-	public init(statusCode: Int = ResourceFetcherError.UnknownErroCode,
-		domain: String = ResourceFetcherError.UnknownErrorDomain,
-		message: String = ResourceFetcherError.UnknownErroMessage){
-			self.statusCode = statusCode
-			self.domain = domain
-			self.message = message
-			super.init()
+	public init(code: Int, domain: String, message: String){
+		self.code = code
+		self.domain = domain
+		self.message = message
+		super.init()
+	}
+
+	override init() {
+		super.init()
 	}
 }
-
