@@ -12,7 +12,7 @@
 
 @interface NSString (BoundingSize)
 
-- (CGSize)eth_boundingSizeWithSize:(UIFont *)font;
+- (CGSize)eth_boundingSizeWithFont:(UIFont *)font;
 - (CGSize)eth_boundingSizeWithSize:(CGSize)eth_size font:(UIFont *)font;
 - (CGSize)eth_boundingSizeWithSize:(CGSize)eth_size font:(UIFont *)font textAlignment:(NSTextAlignment)textAlignement;
 
