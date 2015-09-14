@@ -13,9 +13,16 @@ import Foundation
 	static let UnknownErrorDomain = "Error"
 	static let UnknownErroMessage = "An unknown error occured."
 
-	final public var code: Int = ResourceFetcherError.UnknownErroCode
-	final public var domain: String = ResourceFetcherError.UnknownErrorDomain
-	final public var message: String = ResourceFetcherError.UnknownErroMessage
+	final public let code: Int
+	final public let domain: String
+	final public let message: String
+
+	override init() {
+		self.code = ResourceFetcherError.UnknownErroCode
+		self.domain = ResourceFetcherError.UnknownErrorDomain
+		self.message = ResourceFetcherError.UnknownErroMessage
+		super.init()
+	}
 
 	public init(code: Int, domain: String, message: String){
 		self.code = code
@@ -24,7 +31,19 @@ import Foundation
 		super.init()
 	}
 
-	override init() {
-		super.init()
+	convenience init (error: NSError) {
+		self.init(code: error.code, domain: error.domain, message: error.localizedDescription)
+	}
+}
+
+extension ResourceFetcherError {
+	class var alreadyLoadingError:ResourceFetcherError {
+		return ResourceFetcherError(code: ResourceFetcherError.UnknownErroCode, domain: "Already Loading!", message: "ResourceFetcher is already loading this page")
+	}
+}
+
+extension ErrorType {
+	var resourceFetcherError: ResourceFetcherError {
+		return self as? ResourceFetcherError ?? ResourceFetcherError()
 	}
 }

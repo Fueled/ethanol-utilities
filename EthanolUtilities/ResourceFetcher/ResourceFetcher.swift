@@ -8,15 +8,16 @@
 
 import Foundation
 
-
 @objc public class ResourceFetcher: NSObject {
 
-	public typealias ResourceFetcherCompletionHandler =
-		(success: Bool, hasMoreDataToLoad: Bool, objects: [AnyObject]?,
-		resourceFetcher: ResourceFetcher?, error: ResourceFetcherError?) -> Void
+	public typealias InnerMethodBig = () throws -> (hasMoreDataToLoad: Bool, objects: [AnyObject], resourceFetcher: ResourceFetcher?)
 
-	public typealias ExternalAPICompletionHandler =
-		(success: Bool, objects: [AnyObject]?, error: ResourceFetcherError?) -> Void
+	public typealias InnerMethodSmall = () throws -> [AnyObject]
+
+	public typealias ThrowableCompletionBig = (innerBig: InnerMethodBig) -> Void
+
+	public typealias ThrowableCompletionSmall = (innerSmall: InnerMethodSmall) -> Void
+
 
 	static let defaultPageLimit = 20
 	static let initialPage = 1
@@ -31,12 +32,11 @@ import Foundation
 
 	final private var advanceLoadedObjects: [AnyObject]?
 
-	final private var nextLoadBlock: ResourceFetcherCompletionHandler?
+	final private var nextLoadBlock: ThrowableCompletionBig?
 
 	// MARK: Initializer
 
 	public init(pageLimit: Int = ResourceFetcher.defaultPageLimit) {
-		print("things")
 		self.pageLimit = pageLimit
 		self.currentPage = ResourceFetcher.initialPage
 		super.init()
@@ -57,44 +57,34 @@ import Foundation
 
 	*/
 
-	public func test() throws -> (resourceFetcher: ResourceFetcher, objects: [AnyObject]?) {
-		let error = ResourceFetcherError()
-		let x = rand() % 2
-		if x == 1 {
-			throw error
-		}
-		return (self, nil)
-	}
 
-	final public func startFetchingProducts(completionHandler:ResourceFetcherCompletionHandler? = nil) {
+	final public func startFetchingProducts(completion: ThrowableCompletionBig? = nil) {
 		if(isLoading) {
-			if let completionHandler = completionHandler {
-				completionHandler(success:false, hasMoreDataToLoad:true, objects:nil, resourceFetcher:nil, error:nil)
+			if let completion = completion {
+				completion() {
+					// TODO ; throw already loading error
+					throw ResourceFetcherError.alreadyLoadingError
+				}
 			}
 			return
 		}
 
 		resetAllInfo()
 
-		loadNextPages() {
-			(success, hasMoreDataToLoad, objects, resourceFetcher, error) in
-			let loadedObjects = objects!
-			var moreDataToLoad = hasMoreDataToLoad
-			if success {
+		loadNextPages { (innerBig) -> Void in
+			do {
+				let (hasMoreDataToLoad, objects, resourceFetcher) = try innerBig()
 				self.allObjects.removeAll()
-				self.allObjects.append(loadedObjects)
+				self.allObjects.append(objects)
 
 				if hasMoreDataToLoad {
-					self.fetchNextPage(false, completionHandler: nil)
+					self.fetchNextPage(false, completion: nil)
 				}
-			}
-			else {
-				moreDataToLoad = false
-			}
 
-			if let completion = completionHandler {
-				completion(success: success, hasMoreDataToLoad: moreDataToLoad, objects: objects,
-					resourceFetcher: self, error: error)
+				completion?() { return (hasMoreDataToLoad, objects, resourceFetcher) }
+			}
+			catch {
+				completion?() { throw error.resourceFetcherError }
 			}
 		}
 	}
@@ -110,8 +100,8 @@ import Foundation
 	:param: `completionHandler`	called when the fetch is completed
 
 	*/
-	final public func fetchNextPage(completionHandler:ResourceFetcherCompletionHandler? = nil) {
-		fetchNextPage(true, completionHandler: completionHandler)
+	final public func fetchNextPage(completion: ThrowableCompletionBig? = nil) {
+		fetchNextPage(true, completion: completion)
 	}
 
 	/**
@@ -126,9 +116,10 @@ import Foundation
 	:param: `completionHandler`					Completion Handler on success/failure
 
 	*/
+
 	public func fetchPage(pageNumber:Int = 1, pageLimit: Int = ResourceFetcher.defaultPageLimit,
-		completionHandler:ExternalAPICompletionHandler?) {
-		assertionFailure("This method needs to be implemented in the subclass")
+		completion: ThrowableCompletionSmall?) {
+			assertionFailure("This method needs to be implemented in the subclass")
 	}
 
 
@@ -138,8 +129,7 @@ import Foundation
 		advanceLoadedObjects = nil
 	}
 
-	final private func fetchNextPage(userInitiated:Bool = false,
-		completionHandler:ResourceFetcherCompletionHandler? = nil) {
+	final private func fetchNextPage(userInitiated: Bool = false, completion: ThrowableCompletionBig? = nil) {
 		if userInitiated {
 			/* If user initiated, check if there are advance loaded objects.
 			If exists then send loaded objects back, and load next batch.
@@ -147,17 +137,13 @@ import Foundation
 			if let advanceLoadedObjects = advanceLoadedObjects {
 				allObjects.append(advanceLoadedObjects)
 
-				if let completionHandler = completionHandler {
-					let hasMoreDataToLoad = advanceLoadedObjects.count >= self.pageLimit
-					completionHandler(success: true, hasMoreDataToLoad: hasMoreDataToLoad,
-						objects: advanceLoadedObjects, resourceFetcher: self, error: nil)
-				}
+				completion?() { return ((advanceLoadedObjects.count >= self.pageLimit), advanceLoadedObjects, self) }
 
 				self.advanceLoadedObjects = nil
 			}
 			else {
 				//Setting Next Block
-				nextLoadBlock = completionHandler
+				nextLoadBlock = completion
 
 				//Already Loading. So return. you'll get data in nextLoadBlock
 				if isLoading {
@@ -166,67 +152,51 @@ import Foundation
 			}
 		}
 
-		self.loadNextPages() { (success, hasMoreDataToLoad, objects, resourceFetcher, error) in
-			if success {
-				//Load complete. Checking Next Block
+		loadNextPages { (innerBig) -> Void in
+			do {
+				let (hasMoreDataToLoad,objects,resourceFetcher) = try innerBig()
+
 				if let nextLoadBlock = self.nextLoadBlock {
-					if let objects = objects {
-						self.allObjects.append(objects)
-					}
-					//Passing Next Block
-					nextLoadBlock(success: success, hasMoreDataToLoad: hasMoreDataToLoad,
-						objects: objects, resourceFetcher: self, error: error)
+					self.allObjects.append(objects)
+					nextLoadBlock() { return (hasMoreDataToLoad, objects, resourceFetcher) }
 					self.nextLoadBlock = nil
 
 					if hasMoreDataToLoad {
-						self.fetchNextPage(false, completionHandler: nil)
+						self.fetchNextPage(false, completion: nil)
 					}
 
-				}
-				else {
-					//no Next Block. Save to advance
+				} else {
 					self.advanceLoadedObjects = objects
 				}
 			}
-			else {
+			catch let error {
 				if let nextLoadBlock = self.nextLoadBlock {
-					//Call Failed. Passing saved nextLoadBlock");
-					nextLoadBlock(success: success, hasMoreDataToLoad: hasMoreDataToLoad,
-						objects: objects, resourceFetcher: self, error: error)
+					nextLoadBlock() { throw error.resourceFetcherError }
 					self.nextLoadBlock = nil
+				} else {
+					print("Unhandled Error while Fetching additional Objects")
 				}
 			}
 		}
 	}
 
-	final private func loadNextPages(completionHandler:ResourceFetcherCompletionHandler? = nil) {
+	final private func loadNextPages(completion:ThrowableCompletionBig? = nil) {
 		isLoading = true
 
 		print("xxxx Fetching Page \(self.currentPage)")
 
-		self.fetchPage(self.currentPage, pageLimit: self.pageLimit) {
-			(success, objects, error) in
-			var moreDataToLoad = true
-			if success {
-				if objects?.count >= self.pageLimit { /** excellent use of optional :) :thumbsup: */
-					moreDataToLoad = true
-				} /** Indentation? -> Refer Style guide please :P */
-				else {
-					moreDataToLoad = false
-				}
+		fetchPage(currentPage, pageLimit: pageLimit) { (innerSmall) -> Void in
+
+			do {
+				let objects = try innerSmall()
 				//incremented currentPage
 				self.currentPage++
+				completion?() { return ((objects.count >= self.pageLimit), objects, self) }
 			}
-
-			//Loading Finished
-			self.isLoading = false
-
-			if let completionHandler = completionHandler {
-				completionHandler(success: success, hasMoreDataToLoad: moreDataToLoad,
-					objects: objects, resourceFetcher: self, error: error)
+			catch let error {
+				// TODO
+				completion?() { throw error.resourceFetcherError }
 			}
-
 		}
 	}
-
 }
