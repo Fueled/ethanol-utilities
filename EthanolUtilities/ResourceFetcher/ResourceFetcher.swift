@@ -10,13 +10,13 @@ import Foundation
 
 @objc public class ResourceFetcher: NSObject {
 
-	public typealias InnerMethodBig = () throws -> (hasMoreDataToLoad: Bool, objects: [AnyObject], resourceFetcher: ResourceFetcher?)
+	public typealias ResourceFetcherCompletionInnerHandler = () throws -> (hasMoreDataToLoad: Bool, objects: [AnyObject], resourceFetcher: ResourceFetcher?)
 
-	public typealias InnerMethodSmall = () throws -> [AnyObject]
+	public typealias ExternalAPICompletionInnerHandler = () throws -> [AnyObject]
 
-	public typealias ThrowableCompletionBig = (innerBig: InnerMethodBig) -> Void
+	public typealias ResourceFetcherCompletionHandler = (inner: ResourceFetcherCompletionInnerHandler) -> Void
 
-	public typealias ThrowableCompletionSmall = (innerSmall: InnerMethodSmall) -> Void
+	public typealias ExternalAPICompletionHandler = (inner: ExternalAPICompletionInnerHandler) -> Void
 
 
 	static let defaultPageLimit = 20
@@ -32,7 +32,7 @@ import Foundation
 
 	final private var advanceLoadedObjects: [AnyObject]?
 
-	final private var nextLoadBlock: ThrowableCompletionBig?
+	final private var nextLoadBlock: ResourceFetcherCompletionHandler?
 
 	// MARK: Initializer
 
@@ -58,11 +58,10 @@ import Foundation
 	*/
 
 
-	final public func startFetchingProducts(completion: ThrowableCompletionBig? = nil) {
+	final public func startFetchingProducts(completion: ResourceFetcherCompletionHandler? = nil) {
 		if(isLoading) {
 			if let completion = completion {
 				completion() {
-					// TODO ; throw already loading error
 					throw ResourceFetcherError.alreadyLoadingError
 				}
 			}
@@ -71,11 +70,11 @@ import Foundation
 
 		resetAllInfo()
 
-		loadNextPages { (innerBig) -> Void in
+		loadNextPages { (inner) -> Void in
 			do {
-				let (hasMoreDataToLoad, objects, resourceFetcher) = try innerBig()
+				let (hasMoreDataToLoad, objects, resourceFetcher) = try inner()
 				self.allObjects.removeAll()
-				self.allObjects.append(objects)
+				self.allObjects += objects
 
 				if hasMoreDataToLoad {
 					self.fetchNextPage(false, completion: nil)
@@ -100,7 +99,7 @@ import Foundation
 	:param: `completionHandler`	called when the fetch is completed
 
 	*/
-	final public func fetchNextPage(completion: ThrowableCompletionBig? = nil) {
+	final public func fetchNextPage(completion: ResourceFetcherCompletionHandler? = nil) {
 		fetchNextPage(true, completion: completion)
 	}
 
@@ -118,7 +117,7 @@ import Foundation
 	*/
 
 	public func fetchPage(pageNumber:Int = 1, pageLimit: Int = ResourceFetcher.defaultPageLimit,
-		completion: ThrowableCompletionSmall?) {
+		completion: ExternalAPICompletionHandler?) {
 			assertionFailure("This method needs to be implemented in the subclass")
 	}
 
@@ -129,14 +128,13 @@ import Foundation
 		advanceLoadedObjects = nil
 	}
 
-	final private func fetchNextPage(userInitiated: Bool = false, completion: ThrowableCompletionBig? = nil) {
+	final private func fetchNextPage(userInitiated: Bool = false, completion: ResourceFetcherCompletionHandler? = nil) {
 		if userInitiated {
 			/* If user initiated, check if there are advance loaded objects.
 			If exists then send loaded objects back, and load next batch.
 			*/
 			if let advanceLoadedObjects = advanceLoadedObjects {
-				allObjects.append(advanceLoadedObjects)
-
+				allObjects += advanceLoadedObjects
 				completion?() { return ((advanceLoadedObjects.count >= self.pageLimit), advanceLoadedObjects, self) }
 
 				self.advanceLoadedObjects = nil
@@ -152,12 +150,12 @@ import Foundation
 			}
 		}
 
-		loadNextPages { (innerBig) -> Void in
+		loadNextPages { (inner) -> Void in
 			do {
-				let (hasMoreDataToLoad,objects,resourceFetcher) = try innerBig()
+				let (hasMoreDataToLoad,objects,resourceFetcher) = try inner()
 
 				if let nextLoadBlock = self.nextLoadBlock {
-					self.allObjects.append(objects)
+					self.allObjects += objects
 					nextLoadBlock() { return (hasMoreDataToLoad, objects, resourceFetcher) }
 					self.nextLoadBlock = nil
 
@@ -169,7 +167,7 @@ import Foundation
 					self.advanceLoadedObjects = objects
 				}
 			}
-			catch let error {
+			catch {
 				if let nextLoadBlock = self.nextLoadBlock {
 					nextLoadBlock() { throw error.resourceFetcherError }
 					self.nextLoadBlock = nil
@@ -180,21 +178,20 @@ import Foundation
 		}
 	}
 
-	final private func loadNextPages(completion:ThrowableCompletionBig? = nil) {
+	final private func loadNextPages(completion:ResourceFetcherCompletionHandler? = nil) {
 		isLoading = true
 
 		print("xxxx Fetching Page \(self.currentPage)")
 
-		fetchPage(currentPage, pageLimit: pageLimit) { (innerSmall) -> Void in
+		fetchPage(currentPage, pageLimit: pageLimit) { (inner) -> Void in
 
 			do {
-				let objects = try innerSmall()
+				let objects = try inner()
 				//incremented currentPage
 				self.currentPage++
 				completion?() { return ((objects.count >= self.pageLimit), objects, self) }
 			}
-			catch let error {
-				// TODO
+			catch {
 				completion?() { throw error.resourceFetcherError }
 			}
 		}

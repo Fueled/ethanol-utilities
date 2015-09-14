@@ -44,6 +44,6 @@ extension ResourceFetcherError {
 
 extension ErrorType {
 	var resourceFetcherError: ResourceFetcherError {
-		return self as? ResourceFetcherError ?? ResourceFetcherError()
+		return self as? ResourceFetcherError ?? ResourceFetcherError(error: self as NSError)
 	}
 }
