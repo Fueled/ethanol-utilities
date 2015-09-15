@@ -122,7 +122,7 @@ import Foundation
 
 
 	// MARK: Private Methods
-	final private func resetAllInfo() {
+	internal func resetAllInfo() {
 		currentPage = ResourceFetcher.initialPage
 		advanceLoadedObjects = nil
 	}
