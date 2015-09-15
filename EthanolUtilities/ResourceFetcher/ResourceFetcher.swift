@@ -30,7 +30,7 @@ import Foundation
 
 	final private var pageLimit: Int
 
-	final private var advanceLoadedObjects: [AnyObject]?
+	final internal var advanceLoadedObjects: [AnyObject]?
 
 	final private var nextLoadBlock: ResourceFetcherCompletionHandler?
 
@@ -116,8 +116,7 @@ import Foundation
 
 	*/
 
-	public func fetchPage(pageNumber:Int = 1, pageLimit: Int = ResourceFetcher.defaultPageLimit,
-		completion: ExternalAPICompletionHandler?) {
+	public func fetchPage(pageNumber:Int = 1, pageLimit: Int = ResourceFetcher.defaultPageLimit, completion: ExternalAPICompletionHandler?) {
 			assertionFailure("This method needs to be implemented in the subclass")
 	}
 
@@ -135,9 +134,9 @@ import Foundation
 			*/
 			if let advanceLoadedObjects = advanceLoadedObjects {
 				allObjects += advanceLoadedObjects
+				self.advanceLoadedObjects = nil
 				completion?() { return ((advanceLoadedObjects.count >= self.pageLimit), advanceLoadedObjects, self) }
 
-				self.advanceLoadedObjects = nil
 			}
 			else {
 				//Setting Next Block
