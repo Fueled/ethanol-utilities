@@ -11,13 +11,10 @@ import XCTest
 
 
 class ResourceFetcherTests: XCTestCase {
-	static let webURLTimoutDuration: NSTimeInterval = 15.0
+	static let webURLTimoutDuration: NSTimeInterval = 25.0
 
-	func testFetchingInitialPage() {
+	func testFetchingInitialPage(customFetcher: ResourceFetcher, pageLimit: Int) {
 		let initialPageExpectation = expectationWithDescription("Completed Fetching Initial Page")
-		let pageLimit = 5
-		let customFetcher = TestResourceFetcher(pageLimit: pageLimit)
-		customFetcher.successChance = 100
 		customFetcher.startFetchingProducts { (inner) -> Void in
 			do {
 
@@ -41,13 +38,7 @@ class ResourceFetcherTests: XCTestCase {
 		}
 	}
 
-	func testFetchingLastPage() {
-		let pageLimit = 5
-		let customFetcher = TestResourceFetcher(pageLimit: pageLimit)
-
-		customFetcher.successChance = 100
-		customFetcher.lastPageNumer = 2
-
+	func testFetchingLastPage(customFetcher: ResourceFetcher, pageLimit: Int, lastPageNumber: Int) {
 		let lastPageExpectation = expectationWithDescription("Completed Fetching Final Page")
 
 		customFetcher.startFetchingProducts { (inner) -> Void in
@@ -61,8 +52,10 @@ class ResourceFetcherTests: XCTestCase {
 						let result = try inner()
 						let allObjectsCount = customFetcher.allObjects.count
 						XCTAssertNotNil(result.resourceFetcher, "Resource Fetcher should not be nil!")
-						XCTAssertFalse(result.hasMoreDataToLoad, "Cannot have more data to load!")
-						XCTAssertLessThan(allObjectsCount, (pageLimit * customFetcher.lastPageNumer), "Cannot have more objects than the limit")
+						if customFetcher.isKindOfClass(TestResourceFetcher) {
+							XCTAssertFalse(result.hasMoreDataToLoad, "Cannot have more data to load!")
+						}
+						XCTAssertLessThan(allObjectsCount, (pageLimit * lastPageNumber), "Cannot have more objects than the limit")
 						lastPageExpectation.fulfill()
 					} catch {
 						print("error occurred.")
@@ -79,11 +72,11 @@ class ResourceFetcherTests: XCTestCase {
 		}
 	}
 
-	func testFetchingInAdvance() {
+	func testFetchingInAdvance(customFetcher: ResourceFetcher, lastPageNumber: Int) {
 
 		let pageLimit = 5
 		let customFetcher = TestResourceFetcher(pageLimit: pageLimit)
-		customFetcher.lastPageNumer = 5
+		customFetcher.lastPageNumer = lastPageNumber
 		customFetcher.delayTime = 1
 
 		let thirdPageExpectation = expectationWithDescription("Completed Fetching Third Page")
@@ -145,14 +138,9 @@ class ResourceFetcherTests: XCTestCase {
 		}
 	}
 
-	func testFetchingPageError() {
+	func testFetchingPageError(customFetcher: ResourceFetcher) {
 
 		let errorExpectation = expectationWithDescription("Error")
-
-		let pageLimit = 5
-		let customFetcher = TestResourceFetcher(pageLimit: pageLimit)
-		customFetcher.successChance = 0
-
 		customFetcher.startFetchingProducts { (inner) -> Void in
 			do {
 				let _ = try inner()
@@ -167,4 +155,70 @@ class ResourceFetcherTests: XCTestCase {
 		}
 	}
 
+
+	//MARK: Tests for Resource Fetcher
+
+	func testFetchingInitialPageForTestResourceFetcher() {
+		let pageLimit = 5
+		let customFetcher = TestResourceFetcher(pageLimit: pageLimit)
+		customFetcher.successChance = 100
+		testFetchingInitialPage(customFetcher, pageLimit: pageLimit)
+	}
+
+	func testFetchingLastPageForTestResourceFetcher() {
+		let pageLimit = 5
+		let customFetcher = TestResourceFetcher(pageLimit: pageLimit)
+		customFetcher.successChance = 100
+		customFetcher.lastPageNumer = 2
+		testFetchingLastPage(customFetcher, pageLimit: pageLimit, lastPageNumber: customFetcher.lastPageNumer)
+	}
+
+	func testFetchingInAdvanceForTestResourceFetcher() {
+		let pageLimit = 5
+		let lastPageNumber = 5
+		let customFetcher = TestResourceFetcher(pageLimit: pageLimit)
+		customFetcher.lastPageNumer = lastPageNumber
+		customFetcher.delayTime = 1
+		testFetchingInAdvance(customFetcher, lastPageNumber: lastPageNumber)
+	}
+
+	func testFetchingPageErrorForTestResourceFetcher() {
+		let pageLimit = 5
+		let customFetcher = TestResourceFetcher(pageLimit: pageLimit)
+		customFetcher.successChance = 0
+		testFetchingPageError(customFetcher)
+	}
+
+	//MARK: Tests for CursorBased Resource Fetcher
+
+	func testFetchingInitialPageForTestCursorResourceFetcher() {
+		let pageLimit = 5
+		let customFetcher = TestCursorResourceFetcher(pageLimit: pageLimit)
+		customFetcher.successChance = 100
+		testFetchingInitialPage(customFetcher, pageLimit: pageLimit)
+	}
+
+	func testFetcherFetchingLastPageForTestCursorResourceFetcher (){
+		let pageLimit = 5
+		let customFetcher = TestCursorResourceFetcher(pageLimit: pageLimit)
+		customFetcher.successChance = 100
+		customFetcher.lastPageURL = "5"
+		testFetchingLastPage(customFetcher, pageLimit: pageLimit, lastPageNumber: 5)
+	}
+
+	func testFetchingInAdvanceForTestCursorResourceFetcher() {
+		let pageLimit = 5
+		let customFetcher = TestCursorResourceFetcher(pageLimit: pageLimit)
+		customFetcher.lastPageURL = "5"
+		customFetcher.delayTime = 1
+		testFetchingInAdvance(customFetcher, lastPageNumber: 5)
+	}
+
+	func testFetchingPageErrorForTestCursorResourceFetcher(){
+		let pageLimit = 5
+		let customFetcher = TestCursorResourceFetcher(pageLimit: pageLimit)
+		customFetcher.successChance = 0
+		testFetchingPageError(customFetcher)
+	}
+	
 }
