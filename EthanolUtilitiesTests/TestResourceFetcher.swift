@@ -12,32 +12,24 @@ import UIKit
 class TestResourceFetcher: ResourceFetcher {
 
 	var delayTime = 2.0
-	var lastPageNumer = 5
+	var lastPageNumber = 5
 	var successChance = 90 // percent success chance
 
 	override func fetchPage(pageNumber: Int, pageLimit: Int, completion: ExternalAPICompletionHandler?) {
+		guard let completion = completion else {
+			return
+		}
 
 		let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(delayTime * Double(NSEC_PER_SEC)))
 		dispatch_after(delay, dispatch_get_main_queue()) {
-			var randomArray: [String] = []
-
-			if (pageNumber == self.lastPageNumer) { // Last Page
-				for index in 0..<pageLimit-1 {
-					randomArray.append("Page - \(pageNumber) - \(index)")
+			completion() {
+				let success = (random() % 100 <= self.successChance)
+				if success {
+					let objectsCount = (pageNumber == self.lastPageNumber) ? pageLimit-1 : pageLimit
+					return self.randomResponseArrayFor(pageNumber, objectsCount: objectsCount)
+				} else {
+					throw self.randomResponseError()
 				}
-			} else {
-				for index in 0..<pageLimit {
-					randomArray.append("Page - \(pageNumber) - \(index)")
-				}
-			}
-
-			let error = NSError(domain: "APIERROR", code: 400, userInfo: [NSLocalizedDescriptionKey : "NOTHING ERROR"])
-
-			let success = (random() % 100 <= self.successChance)
-			if success {
-				completion?(){ return randomArray }
-			} else {
-				completion?(){ throw error }
 			}
 		}
 	}
@@ -49,36 +41,42 @@ class TestCursorResourceFetcher: CurserBasedResourceFetcher {
 	var lastPageURL = 5.stringValue
 	var successChance = 90 // percent success chance
 
-	override func fetchPage(url: String?, pageLimit: Int, completion: CursorBasedAPICompletionHandler?){
+	override func fetchPage(url: String?, pageLimit: Int, completion: CursorBasedAPICompletionHandler?) {
 
+		guard let completion = completion else {
+			return
+		}
 
 		let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(delayTime * Double(NSEC_PER_SEC)))
 		dispatch_after(delay, dispatch_get_main_queue()) {
 
-			var randomArray: [String] = []
-
-			let pageNumber = url?.intValue ?? 0
-
-			if (pageNumber == self.lastPageURL.intValue) { // Last Page
-				for index in 0..<pageLimit-1 {
-					randomArray.append("Page - \(pageNumber) - \(index)")
+			completion(){
+				let success = (random() % 100 <= self.successChance)
+				if success {
+					let pageNumber = url?.intValue ?? 0
+					let objectsCount = (pageNumber == self.lastPageURL.intValue) ? pageLimit-1 : pageLimit
+					return ( "1" , nil, self.randomResponseArrayFor(pageNumber, objectsCount: objectsCount))
+				} else {
+					throw self.randomResponseError()
 				}
-			} else {
-				for index in 0..<pageLimit {
-					randomArray.append("Page - \(pageNumber) - \(index)")
-				}
-			}
-
-			let error = NSError(domain: "APIERROR", code: 400, userInfo: [NSLocalizedDescriptionKey : "NOTHING ERROR"])
-
-			let success = (random() % 100 <= self.successChance)
-			if success {
-				completion?(){ return ( "1" , nil, randomArray) }
-			} else {
-				completion?(){ throw error }
 			}
 		}
+	}
+}
 
+
+extension ResourceFetcher {
+	private func randomResponseArrayFor(pageNumber: Int, objectsCount:Int) -> [String] {
+		var randomArray: [String] = []
+		for index in 0..<objectsCount {
+			randomArray.append("Page - \(pageNumber) - \(index)")
+		}
+		return randomArray
+	}
+
+	private func randomResponseError() -> NSError {
+		let error = NSError(domain: "APIERROR", code: 400, userInfo: [NSLocalizedDescriptionKey : "NOTHING ERROR"])
+		return error
 	}
 }
 

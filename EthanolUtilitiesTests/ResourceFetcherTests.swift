@@ -11,9 +11,12 @@ import XCTest
 
 
 class ResourceFetcherTests: XCTestCase {
-	static let webURLTimoutDuration: NSTimeInterval = 25.0
 
-	func testFetchingInitialPage(customFetcher: ResourceFetcher, pageLimit: Int) {
+	static let webURLTimoutDuration: NSTimeInterval = 25.0
+	let pageLimit = 5
+
+
+	func fetchingInitialPage(customFetcher: ResourceFetcher, pageLimit: Int) {
 		let initialPageExpectation = expectationWithDescription("Completed Fetching Initial Page")
 		customFetcher.startFetchingProducts { (inner) -> Void in
 			do {
@@ -38,7 +41,7 @@ class ResourceFetcherTests: XCTestCase {
 		}
 	}
 
-	func testFetchingLastPage(customFetcher: ResourceFetcher, pageLimit: Int, lastPageNumber: Int) {
+	func fetchingLastPage(customFetcher: ResourceFetcher, pageLimit: Int, lastPageNumber: Int) {
 		let lastPageExpectation = expectationWithDescription("Completed Fetching Final Page")
 
 		customFetcher.startFetchingProducts { (inner) -> Void in
@@ -72,11 +75,11 @@ class ResourceFetcherTests: XCTestCase {
 		}
 	}
 
-	func testFetchingInAdvance(customFetcher: ResourceFetcher, lastPageNumber: Int) {
+	func fetchingInAdvance(customFetcher: ResourceFetcher, lastPageNumber: Int) {
 
 		let pageLimit = 5
 		let customFetcher = TestResourceFetcher(pageLimit: pageLimit)
-		customFetcher.lastPageNumer = lastPageNumber
+		customFetcher.lastPageNumber = lastPageNumber
 		customFetcher.delayTime = 1
 
 		let thirdPageExpectation = expectationWithDescription("Completed Fetching Third Page")
@@ -96,7 +99,7 @@ class ResourceFetcherTests: XCTestCase {
 						let allObjectsCount = customFetcher.allObjects.count
 
 						XCTAssertEqual(result.objects.count, pageLimit, "Objects Not Equal to Page Limit!")
-						XCTAssertLessThan(allObjectsCount, pageLimit * customFetcher.lastPageNumer, "All Objects Not equal to all possible fetched objects!")
+						XCTAssertLessThan(allObjectsCount, pageLimit * customFetcher.lastPageNumber, "All Objects Not equal to all possible fetched objects!")
 
 						delay(5.0, closure: { () -> () in // Third Page in Background
 
@@ -138,7 +141,7 @@ class ResourceFetcherTests: XCTestCase {
 		}
 	}
 
-	func testFetchingPageError(customFetcher: ResourceFetcher) {
+	func fetchingPageError(customFetcher: ResourceFetcher) {
 
 		let errorExpectation = expectationWithDescription("Error")
 		customFetcher.startFetchingProducts { (inner) -> Void in
@@ -159,66 +162,58 @@ class ResourceFetcherTests: XCTestCase {
 	//MARK: Tests for Resource Fetcher
 
 	func testFetchingInitialPageForTestResourceFetcher() {
-		let pageLimit = 5
 		let customFetcher = TestResourceFetcher(pageLimit: pageLimit)
 		customFetcher.successChance = 100
-		testFetchingInitialPage(customFetcher, pageLimit: pageLimit)
+		fetchingInitialPage(customFetcher, pageLimit: pageLimit)
 	}
 
 	func testFetchingLastPageForTestResourceFetcher() {
-		let pageLimit = 5
 		let customFetcher = TestResourceFetcher(pageLimit: pageLimit)
 		customFetcher.successChance = 100
-		customFetcher.lastPageNumer = 2
-		testFetchingLastPage(customFetcher, pageLimit: pageLimit, lastPageNumber: customFetcher.lastPageNumer)
+		customFetcher.lastPageNumber = 2
+		fetchingLastPage(customFetcher, pageLimit: pageLimit, lastPageNumber: customFetcher.lastPageNumber)
 	}
 
 	func testFetchingInAdvanceForTestResourceFetcher() {
-		let pageLimit = 5
 		let lastPageNumber = 5
 		let customFetcher = TestResourceFetcher(pageLimit: pageLimit)
-		customFetcher.lastPageNumer = lastPageNumber
+		customFetcher.lastPageNumber = lastPageNumber
 		customFetcher.delayTime = 1
-		testFetchingInAdvance(customFetcher, lastPageNumber: lastPageNumber)
+		fetchingInAdvance(customFetcher, lastPageNumber: lastPageNumber)
 	}
 
 	func testFetchingPageErrorForTestResourceFetcher() {
-		let pageLimit = 5
 		let customFetcher = TestResourceFetcher(pageLimit: pageLimit)
 		customFetcher.successChance = 0
-		testFetchingPageError(customFetcher)
+		fetchingPageError(customFetcher)
 	}
 
 	//MARK: Tests for CursorBased Resource Fetcher
 
 	func testFetchingInitialPageForTestCursorResourceFetcher() {
-		let pageLimit = 5
 		let customFetcher = TestCursorResourceFetcher(pageLimit: pageLimit)
 		customFetcher.successChance = 100
-		testFetchingInitialPage(customFetcher, pageLimit: pageLimit)
+		fetchingInitialPage(customFetcher, pageLimit: pageLimit)
 	}
 
-	func testFetcherFetchingLastPageForTestCursorResourceFetcher (){
-		let pageLimit = 5
+	func testFetcherFetchingLastPageForTestCursorResourceFetcher() {
 		let customFetcher = TestCursorResourceFetcher(pageLimit: pageLimit)
 		customFetcher.successChance = 100
 		customFetcher.lastPageURL = "5"
-		testFetchingLastPage(customFetcher, pageLimit: pageLimit, lastPageNumber: 5)
+		fetchingLastPage(customFetcher, pageLimit: pageLimit, lastPageNumber: 5)
 	}
 
 	func testFetchingInAdvanceForTestCursorResourceFetcher() {
-		let pageLimit = 5
 		let customFetcher = TestCursorResourceFetcher(pageLimit: pageLimit)
 		customFetcher.lastPageURL = "5"
 		customFetcher.delayTime = 1
-		testFetchingInAdvance(customFetcher, lastPageNumber: 5)
+		fetchingInAdvance(customFetcher, lastPageNumber: 5)
 	}
 
-	func testFetchingPageErrorForTestCursorResourceFetcher(){
-		let pageLimit = 5
+	func testFetchingPageErrorForTestCursorResourceFetcher() {
 		let customFetcher = TestCursorResourceFetcher(pageLimit: pageLimit)
 		customFetcher.successChance = 0
-		testFetchingPageError(customFetcher)
+		fetchingPageError(customFetcher)
 	}
 	
 }
