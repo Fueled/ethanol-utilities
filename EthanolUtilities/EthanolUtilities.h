@@ -29,3 +29,4 @@ FOUNDATION_EXPORT const unsigned char EthanolUtilitiesVersionString[];
 #import <EthanolUtilities/NSString+EthanolSecurity.h>
 #import <EthanolUtilities/NSData+EthanolSecurity.h>
 #import <EthanolUtilities/NSString+BoundingSize.h>
+#import <EthanolUtilities/UIImage+Ethanol.h>

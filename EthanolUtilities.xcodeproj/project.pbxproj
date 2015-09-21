@@ -40,6 +40,8 @@
 		F473589B1B443DAB007688EC /* NSTimer+EthanolBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = F47358881B443DAB007688EC /* NSTimer+EthanolBlocks.m */; };
 		F48AA2ED1B99B37B00D45E19 /* BoundingSizeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F48AA2EC1B99B37B00D45E19 /* BoundingSizeTests.m */; settings = {ASSET_TAGS = (); }; };
 		F48AA2EF1B99B52E00D45E19 /* SecurityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F48AA2EE1B99B52E00D45E19 /* SecurityTests.m */; settings = {ASSET_TAGS = (); }; };
+		F49F0E741BB041B8001C647B /* UIImage+Ethanol.h in Headers */ = {isa = PBXBuildFile; fileRef = F49F0E721BB041B8001C647B /* UIImage+Ethanol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F49F0E751BB041B8001C647B /* UIImage+Ethanol.m in Sources */ = {isa = PBXBuildFile; fileRef = F49F0E731BB041B8001C647B /* UIImage+Ethanol.m */; settings = {ASSET_TAGS = (); }; };
 		F4C14E041B43294C003D1286 /* EthanolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C14DF91B43294C003D1286 /* EthanolUtilities.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +88,8 @@
 		F47358881B443DAB007688EC /* NSTimer+EthanolBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+EthanolBlocks.m"; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		F48AA2EC1B99B37B00D45E19 /* BoundingSizeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = BoundingSizeTests.m; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		F48AA2EE1B99B52E00D45E19 /* SecurityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = SecurityTests.m; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
+		F49F0E721BB041B8001C647B /* UIImage+Ethanol.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = "UIImage+Ethanol.h"; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
+		F49F0E731BB041B8001C647B /* UIImage+Ethanol.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Ethanol.m"; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		F4C14DF91B43294C003D1286 /* EthanolUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EthanolUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C14DFC1B43294C003D1286 /* EthanolUtilities.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = EthanolUtilities.h; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		F4C14DFE1B43294C003D1286 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 				0C822EAD1B94F91400CDAB16 /* NSData+EthanolSecurity.m */,
 				0C822EB31B95098E00CDAB16 /* NSString+BoundingSize.h */,
 				0C822EB41B95098E00CDAB16 /* NSString+BoundingSize.m */,
+				F49F0E721BB041B8001C647B /* UIImage+Ethanol.h */,
+				F49F0E731BB041B8001C647B /* UIImage+Ethanol.m */,
 				F4C14DFE1B43294C003D1286 /* Info.plist */,
 			);
 			path = EthanolUtilities;
@@ -190,6 +196,7 @@
 				F47358921B443DAB007688EC /* NSObject+EthanolExecuteOnDealloc.h in Headers */,
 				F473589A1B443DAB007688EC /* NSTimer+EthanolBlocks.h in Headers */,
 				F47358901B443DAB007688EC /* NSDictionary+Ethanol.h in Headers */,
+				F49F0E741BB041B8001C647B /* UIImage+Ethanol.h in Headers */,
 				F47358981B443DAB007688EC /* NSString+EthanolUtils.h in Headers */,
 				0C822EB51B95098E00CDAB16 /* NSString+BoundingSize.h in Headers */,
 				F473588E1B443DAB007688EC /* NSArray+Ethanol.h in Headers */,
@@ -300,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F473588C1B443DAB007688EC /* EthanolSwiftHelpers.swift in Sources */,
+				F49F0E751BB041B8001C647B /* UIImage+Ethanol.m in Sources */,
 				F47358951B443DAB007688EC /* NSObject+EthanolSwizzling.m in Sources */,
 				F47358931B443DAB007688EC /* NSObject+EthanolExecuteOnDealloc.m in Sources */,
 				0C822EAF1B94F91400CDAB16 /* NSString+EthanolSecurity.m in Sources */,
