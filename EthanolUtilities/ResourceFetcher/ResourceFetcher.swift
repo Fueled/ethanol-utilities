@@ -10,12 +10,44 @@ import Foundation
 
 @objc public class ResourceFetcher: NSObject {
 
+	/**
+	ResourceFetcherCompletionInnerHandler
+	
+	:see ResourceFetcherCompletionHandler:
+
+	- Throws: An error of ResourceFetcherError type
+
+	*/
 	public typealias ResourceFetcherCompletionInnerHandler = () throws -> (hasMoreDataToLoad: Bool, objects: [AnyObject], resourceFetcher: ResourceFetcher?)
 
+	/**
+	ExternalAPICompletionInnerHandler
+ 
+	:see ExternalAPICompletionHandler:
+	
+	- Throws: An error of ResourceFetcherError type
+	
+	*/
 	public typealias ExternalAPICompletionInnerHandler = () throws -> [AnyObject]
 
+	/**
+	ResourceFetcherCompletionHandler
+
+	Primary Completion Block with an inner closure to handle errors
+
+	:param: `inner`	which will throw an error on Failure and return a tuple on success
+	
+	*/
 	public typealias ResourceFetcherCompletionHandler = (inner: ResourceFetcherCompletionInnerHandler) -> Void
 
+	/**
+	ExternalAPICompletionHandler
+
+	External API Completion Block for the overridden method with an inner closure to handle errors
+
+	:param: `inner`	which will throw an error on Failure and return the array of objects on successful completion
+
+	*/
 	public typealias ExternalAPICompletionHandler = (inner: ExternalAPICompletionInnerHandler) -> Void
 
 
@@ -116,7 +148,7 @@ import Foundation
 
 	*/
 
-	public func fetchPage(pageNumber:Int = 1, pageLimit: Int = ResourceFetcher.defaultPageLimit, completion: ExternalAPICompletionHandler?) {
+	public func fetchPage(pageNumber:Int = 1, pageLimit: Int = ResourceFetcher.defaultPageLimit, completion: ExternalAPICompletionHandler? = nil) {
 			assertionFailure("This method needs to be implemented in the subclass")
 	}
 
