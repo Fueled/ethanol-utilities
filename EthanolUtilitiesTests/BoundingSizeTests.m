@@ -16,11 +16,11 @@
 @implementation BoundingSizeTests
 
 - (void)testStringBoundingSize {
-	UIFont * font = [UIFont systemFontOfSize:456];
-	CGRect normalizedFontLineHeight = CGRectIntegral(CGRectMake(0.0, 0.0, 0.0, font.lineHeight));
-	CGSize size = [@"test" eth_boundingSizeWithFont:font];
-	CGRect normalizedRect = CGRectIntegral(CGRectMake(0.0, 0.0, size.width, size.height));
-	XCTAssertEqual(CGRectGetHeight(normalizedRect), CGRectGetHeight(normalizedFontLineHeight));
+  UIFont * font = [UIFont systemFontOfSize:456];
+  CGRect normalizedFontLineHeight = CGRectIntegral(CGRectMake(0.0, 0.0, 0.0, font.lineHeight));
+  CGSize size = [@"test" eth_boundingSizeWithFont:font];
+  CGRect normalizedRect = CGRectIntegral(CGRectMake(0.0, 0.0, size.width, size.height));
+  XCTAssertEqual(CGRectGetHeight(normalizedRect), CGRectGetHeight(normalizedFontLineHeight));
 }
 
 @end

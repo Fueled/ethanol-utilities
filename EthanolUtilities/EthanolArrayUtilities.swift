@@ -7,29 +7,29 @@
 //
 
 extension SequenceType {
-  public func find(predicate: Self.Generator.Element -> Bool) -> Int? {
-    for (idx, element) in self.enumerate() {
-      if predicate(element) {
-        return idx
-      }
-    }
-    return nil;
-  }
+	public func find(predicate: Self.Generator.Element -> Bool) -> Int? {
+		for (idx, element) in self.enumerate() {
+			if predicate(element) {
+				return idx
+			}
+		}
+		return nil;
+	}
 }
 
 extension Array {
-  public func keepRange(range: Range<Int>) -> Array<Element> {
-    var array = self
-    array.keepRangeInPlace(range)
-    return array
-  }
-  
-  public mutating func keepRangeInPlace(range: Range<Int>) {
-    if(range.endIndex < self.endIndex) {
-      self.removeRange(range.endIndex..<self.endIndex);
-    }
-    if(range.startIndex > self.startIndex) {
-      self.removeRange(0..<range.startIndex);
-    }
-  }
+	public func keepRange(range: Range<Int>) -> Array<Element> {
+		var array = self
+		array.keepRangeInPlace(range)
+		return array
+	}
+	
+	public mutating func keepRangeInPlace(range: Range<Int>) {
+		if(range.endIndex < self.endIndex) {
+			self.removeRange(range.endIndex..<self.endIndex);
+		}
+		if(range.startIndex > self.startIndex) {
+			self.removeRange(0..<range.startIndex);
+		}
+	}
 }

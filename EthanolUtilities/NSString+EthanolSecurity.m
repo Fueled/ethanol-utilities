@@ -15,7 +15,7 @@
 #define IMPLEMENT_SECURITY_METHOD(name) \
   - (NSString *)eth_ ## name { \
     return [[self dataUsingEncoding:NSUTF8StringEncoding] eth_ ## name]; \
-  } 
+  }
 
 IMPLEMENT_SECURITY_METHOD(MD2)
 IMPLEMENT_SECURITY_METHOD(MD4)

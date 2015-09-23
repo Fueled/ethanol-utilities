@@ -16,7 +16,7 @@
     unsigned char output[CC_ ## name ## _DIGEST_LENGTH]; \
     CC_ ## name([self bytes], (CC_LONG)[self length], output); \
     return [self toHexString:output length:CC_ ## name ##_DIGEST_LENGTH]; \
-  } 
+  }
 
 IMPLEMENT_CRYPTO_METHOD(MD2)
 IMPLEMENT_CRYPTO_METHOD(MD4)

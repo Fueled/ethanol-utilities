@@ -19,7 +19,7 @@
 
 #define GENERATE_SECURITY_TEST(hashMethod, expectedHash) \
   - (void)test ## hashMethod ## Hash { \
-  	XCTAssertEqualObjects([TEST_STRING eth_ ## hashMethod], expectedHash); \
+    XCTAssertEqualObjects([TEST_STRING eth_ ## hashMethod], expectedHash); \
   }
 
 GENERATE_SECURITY_TEST(MD2, @"7cd7ff73db32821724450390bfecfd0e")
