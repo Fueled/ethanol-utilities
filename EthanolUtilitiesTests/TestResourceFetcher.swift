@@ -13,7 +13,7 @@ class TestResourceFetcher: ResourceFetcher {
 
 	var delayTime = 2.0
 	var lastPageNumber = 5
-	var successChance = 90 // percent success chance
+	var successChance = 100 // percent success chance
 
 	override func fetchPage(pageNumber: Int, pageLimit: Int, completion: ExternalAPICompletionHandler?) {
 		guard let completion = completion else {
@@ -39,7 +39,7 @@ class TestCursorResourceFetcher: CurserBasedResourceFetcher {
 
 	var delayTime = 2.0
 	var lastPageURL = 5.stringValue
-	var successChance = 90 // percent success chance
+	var successChance = 100 // percent success chance
 
 	override func fetchPage(url: String?, pageLimit: Int, completion: CursorBasedAPICompletionHandler?) {
 

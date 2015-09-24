@@ -54,13 +54,13 @@ import Foundation
 	static let defaultPageLimit = 20
 	static let initialPage = 1
 
-	final private (set) public var allObjects = [AnyObject]()
+	final internal var allObjects = [AnyObject]()
 
-	final private (set) public var isLoading = false
+	final internal var isLoading = false
 
-	final private var currentPage: Int
+	final internal var currentPage: Int
 
-	final private var pageLimit: Int
+	final internal var pageLimit: Int
 
 	final internal var advanceLoadedObjects: [AnyObject]?
 
@@ -93,9 +93,7 @@ import Foundation
 	final public func startFetchingProducts(completion: ResourceFetcherCompletionHandler? = nil) {
 		if(isLoading) {
 			if let completion = completion {
-				completion() {
-					throw ResourceFetcherError.alreadyLoadingError
-				}
+				completion() { throw ResourceFetcherError.alreadyLoadingError }
 			}
 			return
 		}
@@ -160,6 +158,7 @@ import Foundation
 	}
 
 	final private func fetchNextPage(userInitiated: Bool = false, completion: ResourceFetcherCompletionHandler? = nil) {
+		print("xxxx - \(NSDate()) - ResourceFetcher: Fetching Next Page, UserInitiated? \(userInitiated)")
 		if userInitiated {
 			/* If user initiated, check if there are advance loaded objects.
 			If exists then send loaded objects back, and load next batch.
@@ -167,6 +166,7 @@ import Foundation
 			if let advanceLoadedObjects = advanceLoadedObjects {
 				allObjects += advanceLoadedObjects
 				self.advanceLoadedObjects = nil
+				print("xxxx - \(NSDate()) - ResourceFetcher: Returning Advanced Loaded Objects")
 				completion?() { return ((advanceLoadedObjects.count >= self.pageLimit), advanceLoadedObjects, self) }
 
 			}
@@ -176,7 +176,10 @@ import Foundation
 
 				//Already Loading. So return. you'll get data in nextLoadBlock
 				if isLoading {
+					print("xxxx - \(NSDate()) - ResourceFetcher: Already Loading With Completion")
 					return
+				} else {
+					print("xxxx - \(NSDate()) - ResourceFetcher: Loading Objects in Advance")
 				}
 			}
 		}
@@ -200,10 +203,11 @@ import Foundation
 			}
 			catch {
 				if let nextLoadBlock = self.nextLoadBlock {
+					print("xxxx - \(NSDate()) - ResourceFetcher: Handling Error While Fetching Objects")
 					nextLoadBlock() { throw error.resourceFetcherError }
 					self.nextLoadBlock = nil
 				} else {
-					print("Unhandled Error while Fetching additional Objects")
+					print("xxxx - \(NSDate()) - ResourceFetcher: Unhandled Error while Fetching additional Objects")
 				}
 			}
 		}
@@ -212,7 +216,7 @@ import Foundation
 	final private func loadNextPages(completion:ResourceFetcherCompletionHandler? = nil) {
 		isLoading = true
 
-		print("xxxx Fetching Page \(self.currentPage)")
+		print("xxxx - \(NSDate()) - ResourceFetcher:  Fetching Page \(self.currentPage)")
 
 		fetchPage(currentPage, pageLimit: pageLimit) { (inner) -> Void in
 
