@@ -147,7 +147,7 @@ import Foundation
 	*/
 
 	public func fetchPage(pageNumber:Int = 1, pageLimit: Int = ResourceFetcher.defaultPageLimit, completion: ExternalAPICompletionHandler? = nil) {
-			assertionFailure("This method needs to be implemented in the subclass")
+		assertionFailure("This method needs to be implemented in a subclass")
 	}
 
 

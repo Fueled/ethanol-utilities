@@ -9,22 +9,15 @@
 import Foundation
 
 @objc public class ResourceFetcherError: NSObject, ErrorType {
-	static let UnknownErroCode = 500
+	static let UnknownErrorCode = 500
 	static let UnknownErrorDomain = "Error"
-	static let UnknownErroMessage = "An unknown error occured."
+	static let UnknownErrorMessage = "An unknown error occured."
 
 	final public let code: Int
 	final public let domain: String
 	final public let message: String
 
-	override init() {
-		self.code = ResourceFetcherError.UnknownErroCode
-		self.domain = ResourceFetcherError.UnknownErrorDomain
-		self.message = ResourceFetcherError.UnknownErroMessage
-		super.init()
-	}
-
-	public init(code: Int, domain: String, message: String){
+	public init(code: Int = ResourceFetcherError.UnknownErrorCode, domain: String = ResourceFetcherError.UnknownErrorDomain, message: String = ResourceFetcherError.UnknownErrorMessage){
 		self.code = code
 		self.domain = domain
 		self.message = message
@@ -38,7 +31,7 @@ import Foundation
 
 extension ResourceFetcherError {
 	class var alreadyLoadingError:ResourceFetcherError {
-		return ResourceFetcherError(code: ResourceFetcherError.UnknownErroCode, domain: "Already Loading!", message: "ResourceFetcher is already loading this page")
+		return ResourceFetcherError(code: ResourceFetcherError.UnknownErrorCode, domain: "Already Loading!", message: "ResourceFetcher is already loading this page")
 	}
 }
 

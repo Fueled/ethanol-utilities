@@ -62,7 +62,11 @@ public struct CursorBasedPageInfo {
 	*/
 
 	public func fetchPage(url: String?, pageLimit: Int, completion: CursorBasedAPICompletionHandler?){
-		assertionFailure("This should be implemented in subclass");
+		if let completion = completion {
+			completion() { throw ResourceFetcherError(code: ResourceFetcherError.UnknownErrorCode, domain: "MISSING METHOD IMPLEMENTATION!!!", message: "This method needs to be implemented in a subclass.") }
+		} else {
+			assertionFailure("This method needs to be implemented in a subclass")
+		}
 	}
 }
 
