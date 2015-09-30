@@ -43,7 +43,7 @@ public struct CursorBasedPageInfo {
 					completion?(){ return objects }
 				}
 				catch {
-					completion?() { throw error.resourceFetcherError }
+					completion?() { throw ResourceFetcherError.OtherError }
 				}
 			}
 	}

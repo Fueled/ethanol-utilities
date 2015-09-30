@@ -34,7 +34,7 @@ class ResourceFetcherTests: XCTestCase {
 				initialPageExpectation.fulfill()
 			} catch {
 				print("Error : \(error)")
-				print("ErrorDesc : \(error.resourceFetcherError.message)")
+				print("ErrorDesc : \(error.errorMessage)")
 				XCTAssertNotNil(error)
 
 				initialPageExpectation.fulfill()
@@ -68,13 +68,13 @@ class ResourceFetcherTests: XCTestCase {
 						lastPageExpectation.fulfill()
 					} catch {
 						print("Error : \(error)")
-						print("ErrorDesc : \(error.resourceFetcherError.message)")
+						print("ErrorDesc : \(error.errorMessage)")
 						lastPageExpectation.fulfill()
 					}
 				}
 			} catch {
 				print("Error : \(error)")
-				print("ErrorDesc : \(error.resourceFetcherError.message)")
+				print("ErrorDesc : \(error.errorMessage)")
 				lastPageExpectation.fulfill()
 			}
 
@@ -116,14 +116,14 @@ class ResourceFetcherTests: XCTestCase {
 
 						} catch {
 							print("Error : \(error)")
-							print("ErrorDesc : \(error.resourceFetcherError.message)")
+							print("ErrorDesc : \(error.errorMessage)")
 							secondPageExpectation.fulfill()
 						}
 					})
 				})
 			} catch {
 				print("Error : \(error)")
-				print("ErrorDesc : \(error.resourceFetcherError.message)")
+				print("ErrorDesc : \(error.errorMessage)")
 				secondPageExpectation.fulfill()
 			}
 		}
@@ -173,7 +173,7 @@ class ResourceFetcherTests: XCTestCase {
 								}
 								catch {
 									print("Error : \(error)")
-									print("ErrorDesc : \(error.resourceFetcherError.message)")
+									print("ErrorDesc : \(error.errorMessage)")
 									XCTAssertNotNil(error as NSError)
 									thirdPageExpectation.fulfill()
 
@@ -182,14 +182,14 @@ class ResourceFetcherTests: XCTestCase {
 						})
 					} catch {
 						print("Error : \(error)")
-						print("ErrorDesc : \(error.resourceFetcherError.message)")
+						print("ErrorDesc : \(error.errorMessage)")
 						XCTAssertNotNil(error as NSError)
 						thirdPageExpectation.fulfill()
 					}
 				}
 			} catch {
 				print("Error : \(error)")
-				print("ErrorDesc : \(error.resourceFetcherError.message)")
+				print("ErrorDesc : \(error.errorMessage)")
 				XCTAssertNotNil(error as NSError)
 				thirdPageExpectation.fulfill()
 			}
@@ -218,7 +218,7 @@ class ResourceFetcherTests: XCTestCase {
 			} catch {
 				errorExpectation.fulfill()
 				print("Error : \(error)")
-				print("ErrorDesc : \(error.resourceFetcherError.message)")
+				print("ErrorDesc : \(error.errorMessage)")
 				XCTAssertNotNil(error as NSError)
 			}
 		}
@@ -258,7 +258,7 @@ class ResourceFetcherTests: XCTestCase {
 				initialPageExpectation.fulfill()
 			} catch {
 				print("Error : \(error)")
-				print("ErrorDesc : \(error.resourceFetcherError.message)")
+				print("ErrorDesc : \(error.errorMessage)")
 				XCTAssertNotNil(error)
 
 				initialPageExpectation.fulfill()
@@ -282,7 +282,7 @@ class ResourceFetcherTests: XCTestCase {
 					nextPageExpectation.fulfill()
 				} catch {
 					print("Error : \(error)")
-					print("ErrorDesc : \(error.resourceFetcherError.message)")
+					print("ErrorDesc : \(error.errorMessage)")
 					XCTAssertNotNil(error)
 
 					nextPageExpectation.fulfill()
@@ -326,7 +326,7 @@ class ResourceFetcherTests: XCTestCase {
 				initialPageExpectation.fulfill()
 			} catch {
 				print("Error : \(error)")
-				print("ErrorDesc : \(error.resourceFetcherError.message)")
+				print("ErrorDesc : \(error.errorMessage)")
 				XCTAssertNotNil(error)
 
 				initialPageExpectation.fulfill()
@@ -352,7 +352,7 @@ class ResourceFetcherTests: XCTestCase {
 					}
 				} catch {
 					print("Error : \(error)")
-					print("ErrorDesc : \(error.resourceFetcherError.message)")
+					print("ErrorDesc : \(error.errorMessage)")
 					XCTAssertNotNil(error)
 
 					delay(3) {
@@ -391,7 +391,7 @@ class ResourceFetcherTests: XCTestCase {
 				initialPageExpectation.fulfill()
 			} catch {
 				print("Error : \(error)")
-				print("ErrorDesc : \(error.resourceFetcherError.message)")
+				print("ErrorDesc : \(error.errorMessage)")
 				XCTAssertNotNil(error)
 
 				initialPageExpectation.fulfill()
@@ -418,7 +418,7 @@ class ResourceFetcherTests: XCTestCase {
 					}
 				} catch {
 					print("Error : \(error)")
-					print("ErrorDesc : \(error.resourceFetcherError.message)")
+					print("ErrorDesc : \(error.errorMessage)")
 					XCTAssertNotNil(error)
 
 					delay(3) {
@@ -463,7 +463,7 @@ class ResourceFetcherTests: XCTestCase {
 				}
 			} catch {
 				print("Error : \(error)")
-				print("ErrorDesc : \(error.resourceFetcherError.message)")
+				print("ErrorDesc : \(error.errorMessage)")
 				XCTAssertNotNil(error)
 
 				delay(3) {
@@ -539,7 +539,7 @@ class ResourceFetcherCursorBasedTests: ResourceFetcherTests {
 				initialPageExpectation.fulfill()
 			} catch {
 				print("Error : \(error)")
-				print("ErrorDesc : \(error.resourceFetcherError.message)")
+				print("ErrorDesc : \(error.errorMessage)")
 				XCTAssertNotNil(error)
 
 				initialPageExpectation.fulfill()
@@ -563,7 +563,7 @@ class ResourceFetcherCursorBasedTests: ResourceFetcherTests {
 					nextPageExpectation.fulfill()
 				} catch {
 					print("Error : \(error)")
-					print("ErrorDesc : \(error.resourceFetcherError.message)")
+					print("ErrorDesc : \(error.errorMessage)")
 					XCTAssertNotNil(error)
 
 					nextPageExpectation.fulfill()
@@ -609,7 +609,7 @@ class ResourceFetcherCursorBasedTests: ResourceFetcherTests {
 				initialPageExpectation.fulfill()
 			} catch {
 				print("Error : \(error)")
-				print("ErrorDesc : \(error.resourceFetcherError.message)")
+				print("ErrorDesc : \(error.errorMessage)")
 				XCTAssertNotNil(error)
 
 				initialPageExpectation.fulfill()
@@ -635,7 +635,7 @@ class ResourceFetcherCursorBasedTests: ResourceFetcherTests {
 					}
 				} catch {
 					print("Error : \(error)")
-					print("ErrorDesc : \(error.resourceFetcherError.message)")
+					print("ErrorDesc : \(error.errorMessage)")
 					XCTAssertNotNil(error)
 
 					delay(3) {
@@ -674,7 +674,7 @@ class ResourceFetcherCursorBasedTests: ResourceFetcherTests {
 				initialPageExpectation.fulfill()
 			} catch {
 				print("Error : \(error)")
-				print("ErrorDesc : \(error.resourceFetcherError.message)")
+				print("ErrorDesc : \(error.errorMessage)")
 				XCTAssertNotNil(error)
 
 				initialPageExpectation.fulfill()
@@ -701,7 +701,7 @@ class ResourceFetcherCursorBasedTests: ResourceFetcherTests {
 					}
 				} catch {
 					print("Error : \(error)")
-					print("ErrorDesc : \(error.resourceFetcherError.message)")
+					print("ErrorDesc : \(error.errorMessage)")
 					XCTAssertNotNil(error)
 
 					delay(3) {
@@ -746,7 +746,7 @@ class ResourceFetcherCursorBasedTests: ResourceFetcherTests {
 				}
 			} catch {
 				print("Error : \(error)")
-				print("ErrorDesc : \(error.resourceFetcherError.message)")
+				print("ErrorDesc : \(error.errorMessage)")
 				XCTAssertNotNil(error)
 
 				delay(3) {

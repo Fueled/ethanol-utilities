@@ -93,7 +93,7 @@ import Foundation
 	final public func startFetchingProducts(completion: ResourceFetcherCompletionHandler? = nil) {
 		if(isLoading) {
 			if let completion = completion {
-				completion() { throw ResourceFetcherError.alreadyLoadingError }
+				completion() { throw ResourceFetcherError.AlreadyLoadingError }
 			}
 			return
 		}
@@ -113,7 +113,7 @@ import Foundation
 				completion?() { return (hasMoreDataToLoad, objects, resourceFetcher) }
 			}
 			catch {
-				completion?() { throw error.resourceFetcherError }
+				completion?() { throw ResourceFetcherError.OtherError }
 			}
 		}
 	}
@@ -204,7 +204,7 @@ import Foundation
 			catch {
 				if let nextLoadBlock = self.nextLoadBlock {
 					print("xxxx - \(NSDate()) - ResourceFetcher: Handling Error While Fetching Objects")
-					nextLoadBlock() { throw error.resourceFetcherError }
+					nextLoadBlock() { throw ResourceFetcherError.OtherError }
 					self.nextLoadBlock = nil
 				} else {
 					print("xxxx - \(NSDate()) - ResourceFetcher: Unhandled Error while Fetching additional Objects")
@@ -227,7 +227,7 @@ import Foundation
 				completion?() { return ((objects.count >= self.pageLimit), objects, self) }
 			}
 			catch {
-				completion?() { throw error.resourceFetcherError }
+				completion?() { throw ResourceFetcherError.OtherError }
 			}
 		}
 	}

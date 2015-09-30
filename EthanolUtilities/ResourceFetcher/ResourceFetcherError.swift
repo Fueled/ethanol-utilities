@@ -8,35 +8,27 @@
 
 import Foundation
 
-@objc public class ResourceFetcherError: NSObject, ErrorType {
-	static let UnknownErrorCode = 500
-	static let UnknownErrorDomain = "Error"
-	static let UnknownErrorMessage = "An unknown error occured."
-
-	final public let code: Int
-	final public let domain: String
-	final public let message: String
-
-	public init(code: Int = ResourceFetcherError.UnknownErrorCode, domain: String = ResourceFetcherError.UnknownErrorDomain, message: String = ResourceFetcherError.UnknownErrorMessage){
-		self.code = code
-		self.domain = domain
-		self.message = message
-		super.init()
+@objc public enum ResourceFetcherError: Int, ErrorType {
+	public static var _NSErrorDomain: String {
+		return "com.Fueled.ResourceFetcherError"
 	}
 
-	convenience init (error: NSError) {
-		self.init(code: error.code, domain: error.domain, message: error.localizedDescription)
-	}
-}
-
-extension ResourceFetcherError {
-	class var alreadyLoadingError:ResourceFetcherError {
-		return ResourceFetcherError(code: ResourceFetcherError.UnknownErrorCode, domain: "Already Loading!", message: "ResourceFetcher is already loading this page")
-	}
+	case AlreadyLoadingError, UnknownError, OtherError
 }
 
 extension ErrorType {
-	var resourceFetcherError: ResourceFetcherError {
-		return self as? ResourceFetcherError ?? ResourceFetcherError(error: self as NSError)
+	var errorMessage: String {
+		if let error = self as? ResourceFetcherError {
+			switch error {
+			case .AlreadyLoadingError:
+				return "ResourceFetcher is already loading this page"
+			case .UnknownError:
+				return "An unknown error occured."
+			default:
+				return (self as NSError).localizedDescription
+			}
+		} else {
+			return (self as NSError).localizedDescription
+		}
 	}
 }
