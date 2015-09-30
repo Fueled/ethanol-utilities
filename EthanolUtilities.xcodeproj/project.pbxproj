@@ -13,11 +13,11 @@
 		0C822EB11B94F91400CDAB16 /* NSData+EthanolSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C822EAD1B94F91400CDAB16 /* NSData+EthanolSecurity.m */; };
 		0C822EB51B95098E00CDAB16 /* NSString+BoundingSize.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C822EB31B95098E00CDAB16 /* NSString+BoundingSize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0C822EB61B95098E00CDAB16 /* NSString+BoundingSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C822EB41B95098E00CDAB16 /* NSString+BoundingSize.m */; };
-		538C35C41BA829CA0047C3E7 /* CurserBasedResourceFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538C35C31BA829CA0047C3E7 /* CurserBasedResourceFetcher.swift */; settings = {ASSET_TAGS = (); }; };
 		539876D51B95A34500500AAA /* ResourceFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539876D41B95A34500500AAA /* ResourceFetcher.swift */; };
 		53B675401B9D5B9400D9DC5E /* ResourceFetcherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B6753F1B9D5B9400D9DC5E /* ResourceFetcherError.swift */; };
 		655DC4C11BA8035C002A61CF /* TestResourceFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655DC4C01BA8035C002A61CF /* TestResourceFetcher.swift */; };
 		655DC4C31BA80D3D002A61CF /* ResourceFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655DC4C21BA80D3D002A61CF /* ResourceFetcherTests.swift */; };
+		65BE32811BBBBFA8000E1954 /* CursorBasedResourceFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BE32801BBBBFA8000E1954 /* CursorBasedResourceFetcher.swift */; settings = {ASSET_TAGS = (); }; };
 		F42307CD1B4C2639007425D4 /* EthanolUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C14DFC1B43294C003D1286 /* EthanolUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F45ADFDF1B850A65003842E1 /* NSStringUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F45ADFDE1B850A65003842E1 /* NSStringUtilsTests.m */; };
 		F45ADFE11B851678003842E1 /* CollectionHelpersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F45ADFE01B851678003842E1 /* CollectionHelpersTests.m */; };
@@ -65,14 +65,14 @@
 		0C822EAD1B94F91400CDAB16 /* NSData+EthanolSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = "NSData+EthanolSecurity.m"; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		0C822EB31B95098E00CDAB16 /* NSString+BoundingSize.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = "NSString+BoundingSize.h"; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		0C822EB41B95098E00CDAB16 /* NSString+BoundingSize.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = "NSString+BoundingSize.m"; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
-		F45ADFDE1B850A65003842E1 /* NSStringUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = NSStringUtilsTests.m; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
-		F45ADFE01B851678003842E1 /* CollectionHelpersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = CollectionHelpersTests.m; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
-		F45ADFE21B8518E3003842E1 /* NSObjectUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = NSObjectUtilsTests.m; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
-		538C35C31BA829CA0047C3E7 /* CurserBasedResourceFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurserBasedResourceFetcher.swift; sourceTree = "<group>"; };
 		539876D41B95A34500500AAA /* ResourceFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceFetcher.swift; sourceTree = "<group>"; };
 		53B6753F1B9D5B9400D9DC5E /* ResourceFetcherError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceFetcherError.swift; sourceTree = "<group>"; };
 		655DC4C01BA8035C002A61CF /* TestResourceFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestResourceFetcher.swift; sourceTree = "<group>"; };
 		655DC4C21BA80D3D002A61CF /* ResourceFetcherTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceFetcherTests.swift; sourceTree = "<group>"; };
+		65BE32801BBBBFA8000E1954 /* CursorBasedResourceFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CursorBasedResourceFetcher.swift; sourceTree = "<group>"; };
+		F45ADFDE1B850A65003842E1 /* NSStringUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = NSStringUtilsTests.m; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
+		F45ADFE01B851678003842E1 /* CollectionHelpersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = CollectionHelpersTests.m; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
+		F45ADFE21B8518E3003842E1 /* NSObjectUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = NSObjectUtilsTests.m; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		F45ADFE91B85243B003842E1 /* SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftTests.swift; sourceTree = "<group>"; };
 		F45ADFEB1B852635003842E1 /* RunLoopTests.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = RunLoopTests.m; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		F47358761B443DAB007688EC /* CADisplayLink+EthanolBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = "CADisplayLink+EthanolBlocks.h"; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
@@ -127,7 +127,7 @@
 			children = (
 				539876D41B95A34500500AAA /* ResourceFetcher.swift */,
 				53B6753F1B9D5B9400D9DC5E /* ResourceFetcherError.swift */,
-				538C35C31BA829CA0047C3E7 /* CurserBasedResourceFetcher.swift */,
+				65BE32801BBBBFA8000E1954 /* CursorBasedResourceFetcher.swift */,
 			);
 			path = ResourceFetcher;
 			sourceTree = "<group>";
@@ -324,6 +324,7 @@
 			files = (
 				F473588C1B443DAB007688EC /* EthanolSwiftHelpers.swift in Sources */,
 				539876D51B95A34500500AAA /* ResourceFetcher.swift in Sources */,
+				65BE32811BBBBFA8000E1954 /* CursorBasedResourceFetcher.swift in Sources */,
 				F47358951B443DAB007688EC /* NSObject+EthanolSwizzling.m in Sources */,
 				53B675401B9D5B9400D9DC5E /* ResourceFetcherError.swift in Sources */,
 				F47358931B443DAB007688EC /* NSObject+EthanolExecuteOnDealloc.m in Sources */,
@@ -336,7 +337,6 @@
 				0C822EB11B94F91400CDAB16 /* NSData+EthanolSecurity.m in Sources */,
 				F47358991B443DAB007688EC /* NSString+EthanolUtils.m in Sources */,
 				F473589B1B443DAB007688EC /* NSTimer+EthanolBlocks.m in Sources */,
-				538C35C41BA829CA0047C3E7 /* CurserBasedResourceFetcher.swift in Sources */,
 				F473588A1B443DAB007688EC /* CADisplayLink+EthanolBlocks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -54,7 +54,7 @@ import Foundation
 	static let defaultPageLimit = 20
 	static let initialPage = 1
 
-	final internal var allObjects = [AnyObject]()
+	final private (set) public var allObjects = [AnyObject]()
 
 	final internal var isLoading = false
 

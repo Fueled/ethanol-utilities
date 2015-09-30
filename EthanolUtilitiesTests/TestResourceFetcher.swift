@@ -35,7 +35,7 @@ class TestResourceFetcher: ResourceFetcher {
 	}
 }
 
-class TestCursorResourceFetcher: CurserBasedResourceFetcher {
+class TestCursorResourceFetcher: CursorBasedResourceFetcher {
 
 	var delayTime = 2.0
 	var lastPageURL = 5.stringValue

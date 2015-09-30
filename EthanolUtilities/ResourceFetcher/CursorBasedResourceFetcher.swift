@@ -1,5 +1,5 @@
 //
-//  CurserBasedResourceFetcher.swift
+//  CursorBasedResourceFetcher.swift
 //  EthanolUtilities
 //
 //  Created by Ravindra Soni on 15/09/2015.
@@ -14,7 +14,7 @@ public struct CursorBasedPageInfo {
 	var objects: [AnyObject]
 }
 
-@objc public class CurserBasedResourceFetcher: ResourceFetcher {
+@objc public class CursorBasedResourceFetcher: ResourceFetcher {
 
 
 	public typealias CursorBasedAPICompletionInnerHandler =
@@ -62,11 +62,7 @@ public struct CursorBasedPageInfo {
 	*/
 
 	public func fetchPage(url: String?, pageLimit: Int, completion: CursorBasedAPICompletionHandler?){
-		if let completion = completion {
-			completion() { throw ResourceFetcherError(code: ResourceFetcherError.UnknownErrorCode, domain: "MISSING METHOD IMPLEMENTATION!!!", message: "This method needs to be implemented in a subclass.") }
-		} else {
-			assertionFailure("This method needs to be implemented in a subclass")
-		}
+		assertionFailure("This should be implemented in subclass");
 	}
 }
 
