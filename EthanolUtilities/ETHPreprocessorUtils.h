@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Fueled. All rights reserved.
 //
 
+#import "tgmath.h"
+
 #define _ETH_TO_STRING(s) #s
 #define ETH_TO_STRING(s) _ETH_TO_STRING(s)
 
@@ -246,3 +248,23 @@ static char firstLetterLowercase ## propertyNameWithoutFirstLetter ## Key; \
 #define ETH_BIT_RANGE(position, length, range) (((range) & ((1 << (length)) - 1)) << ((position) * (length)))
 #define ETH_SET_BIT_RANGE(var, position, length, range) ((var) | ETH_BIT_RANGE(position, length, range))
 
+#define ETH_COMPARE_WITH_DELTA(value, compareTo, delta) \
+	({ \
+		BOOL returnValue; \
+		if(isinf(value) && isinf(compareTo)) { \
+			if((value < 0.0 && compareTo > 0.0) || (!value > 0.0 && compareTo < 0.0)) { \
+				returnValue = NO; \
+			} else { \
+				returnValue = !isinf(delta); \
+			} \
+		} else if(isinf(delta)) { \
+			if(isinf(value)) { \
+				returnValue = NO; \
+			} else { \
+				returnValue = YES; \
+			} \
+		} else { \
+			returnValue = fabs(value - compareTo) < fabs(delta); \
+		} \
+		returnValue; \
+	})
