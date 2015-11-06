@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <EthanolUtilities/ETHpreprocessorUtils.h>
+#import "ETHpreprocessorUtils.h"
 
 typedef void (^ ETHTimerTriggeredBlock)(NSTimer * timer);
 
