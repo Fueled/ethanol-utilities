@@ -34,13 +34,13 @@ public func compareWithDelta<T where T: SignedNumberType, T: FloatingPointType>(
 		}
 		return true
 	}
-	return abs(value - compareTo) < abs(delta)
+	return abs(value - compareTo) <= abs(delta)
 }
 
 infix operator ~= { precedence 60 }
 infix operator +- { precedence 70 }
 
-// This operator is not made to be used by itself. Please use it with ~= (Syntax is value ~= compare +- delta)
+// This operator is not made to be used by itself. Please use it with ~= (Syntax is value ~= (compare +- delta))
 public func +-<T: SignedNumberType>(@autoclosure lhs: () -> T, @autoclosure rhs: () -> T)(left: Bool) -> T {
 	return left ? lhs() : rhs()
 }
