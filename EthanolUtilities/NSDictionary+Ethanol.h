@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <EthanolUtilities/ETHPreprocessorUtils.h>
+#import "ETHPreprocessorUtils.h"
 
 @interface NSDictionary (Ethanol)
 
