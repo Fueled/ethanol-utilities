@@ -16,7 +16,7 @@
 }
 
 - (NSString *)eth_stringByRemovingCharacters:(NSCharacterSet *)charactersToRemove {
-  NSInteger temp;
+  NSInteger temp = 0;
   return [self eth_stringByRemovingCharacters:charactersToRemove preserveCursor:&temp];
 }
 
