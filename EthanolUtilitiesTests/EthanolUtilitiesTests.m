@@ -1,8 +1,8 @@
 //
-//  NSSet+Ethanol.h
-//  EthanolUtilities
+//  EthanolUtilitiesUtilitiesTests.m
+//  EthanolUtilitiesUtilitiesTests
 //
-//  Created by Stephane Copin on 9/2/14.
+//  Created by Stephane Copin on 6/30/15.
 //  Copyright (c) 2014 Fueled Digital Media, LLC.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,18 +24,34 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import <XCTest/XCTest.h>
 
-@interface NSSet (Ethanol)
-
-+ (instancetype)eth_setWithObjectNumber:(NSUInteger)objectNumber objects:(id)firstObject, ...;
+@interface EthanolUtilitiesTests : XCTestCase
 
 @end
 
-#define ETHSET_(...) \
-  [NSSet eth_setWithObjectNumber:ETH_NARG(__VA_ARGS__) objects:__VA_ARGS__] \
+@implementation EthanolUtilitiesTests
 
-/**
- *  Create a set that allows nil values which will be ignored.
- */
-#define ETHSET(...) ETHSET_(nil, ## __VA_ARGS__)
+- (void)setUp {
+    [super setUp];
+    // Put setup code here. This method is called before the invocation of each test method in the class.
+}
+
+- (void)tearDown {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [super tearDown];
+}
+
+- (void)testExample {
+    // This is an example of a functional test case.
+    // Use XCTAssert and related functions to verify your tests produce the correct results.
+}
+
+- (void)testPerformanceExample {
+    // This is an example of a performance test case.
+    [self measureBlock:^{
+        // Put the code you want to measure the time of here.
+    }];
+}
+
+@end
