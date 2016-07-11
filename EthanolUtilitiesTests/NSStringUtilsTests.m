@@ -1,8 +1,8 @@
 //
-//  NSSet+Ethanol.h
+//  NSStringUtilsTests.m
 //  EthanolUtilities
 //
-//  Created by Stephane Copin on 9/2/14.
+//  Created by Stephane Copin on 8/19/15.
 //  Copyright (c) 2014 Fueled Digital Media, LLC.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,18 +24,39 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import <XCTest/XCTest.h>
 
-@interface NSSet (Ethanol)
+#import "NSString+EthanolUtils.h"
 
-+ (instancetype)eth_setWithObjectNumber:(NSUInteger)objectNumber objects:(id)firstObject, ...;
+@interface NSStringUtilsTests : XCTestCase
 
 @end
 
-#define ETHSET_(...) \
-  [NSSet eth_setWithObjectNumber:ETH_NARG(__VA_ARGS__) objects:__VA_ARGS__] \
+@implementation NSStringUtilsTests
 
-/**
- *  Create a set that allows nil values which will be ignored.
- */
-#define ETHSET(...) ETHSET_(nil, ## __VA_ARGS__)
+- (void)testRemovingCharacters {
+  XCTAssertEqualObjects([@"abcdef" eth_stringByRemovingCharacters:[NSCharacterSet characterSetWithCharactersInString:@"ace"]], @"bdf");
+}
+
+- (void)testRemovingCharactersWithCursor {
+  NSInteger cursor = 3;
+  NSString * result = [@"abcdef" eth_stringByRemovingCharacters:[NSCharacterSet characterSetWithCharactersInString:@"ace"] preserveCursor:&cursor];
+  XCTAssertEqualObjects(result, @"bdf");
+  XCTAssertTrue(cursor == 1);
+}
+
+- (void)testRemovingCharactersNoCharacterSetProvided {
+  NSString * test = @"foobar";
+  XCTAssertEqualObjects([test eth_stringByRemovingCharacters:nil], test);
+}
+
+- (void)testRemovingCharactersNoCharactersRemoved {
+  NSString * test = @"foobar";
+  XCTAssertEqualObjects([test eth_stringByRemovingCharacters:[NSCharacterSet illegalCharacterSet]], test);
+}
+
+- (void)testStringContainsSubstring {
+  XCTAssertTrue([@"abcde" eth_containsSubstring:@"bcd"]);
+}
+
+@end

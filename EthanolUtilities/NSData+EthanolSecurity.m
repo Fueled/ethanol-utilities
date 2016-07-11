@@ -1,8 +1,8 @@
 //
-//  NSSet+Ethanol.h
-//  EthanolUtilities
+//  NSData+EthanolSecurity.m
+//  Ethanol
 //
-//  Created by Stephane Copin on 9/2/14.
+//  Created by Stephane Copin on 4/14/14.
 //  Copyright (c) 2014 Fueled Digital Media, LLC.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,18 +24,33 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import <CommonCrypto/CommonDigest.h>
+#import "NSData+EthanolSecurity.h"
 
-@interface NSSet (Ethanol)
+@implementation NSData (EthanolSecurity)
 
-+ (instancetype)eth_setWithObjectNumber:(NSUInteger)objectNumber objects:(id)firstObject, ...;
+#define IMPLEMENT_CRYPTO_METHOD(name) \
+  - (NSString *)eth_ ## name { \
+    unsigned char output[CC_ ## name ## _DIGEST_LENGTH]; \
+    CC_ ## name([self bytes], (CC_LONG)[self length], output); \
+    return [self toHexString:output length:CC_ ## name ##_DIGEST_LENGTH]; \
+  }
+
+IMPLEMENT_CRYPTO_METHOD(MD2)
+IMPLEMENT_CRYPTO_METHOD(MD4)
+IMPLEMENT_CRYPTO_METHOD(MD5)
+IMPLEMENT_CRYPTO_METHOD(SHA1)
+IMPLEMENT_CRYPTO_METHOD(SHA256)
+IMPLEMENT_CRYPTO_METHOD(SHA384)
+IMPLEMENT_CRYPTO_METHOD(SHA512)
+
+- (NSString *)toHexString:(unsigned char *)data length:(unsigned int)length {
+  NSMutableString *hash = [NSMutableString stringWithCapacity:length * 2];
+  for (unsigned int i = 0; i < length; i++) {
+    [hash appendFormat:@"%02x", data[i]];
+    data[i] = 0;
+  }
+  return hash;
+}
 
 @end
-
-#define ETHSET_(...) \
-  [NSSet eth_setWithObjectNumber:ETH_NARG(__VA_ARGS__) objects:__VA_ARGS__] \
-
-/**
- *  Create a set that allows nil values which will be ignored.
- */
-#define ETHSET(...) ETHSET_(nil, ## __VA_ARGS__)

@@ -1,8 +1,8 @@
 //
-//  NSSet+Ethanol.h
+//  BoundingSizeTests.m
 //  EthanolUtilities
 //
-//  Created by Stephane Copin on 9/2/14.
+//  Created by Stephane Copin on 9/4/15.
 //  Copyright (c) 2014 Fueled Digital Media, LLC.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,18 +24,21 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import <XCTest/XCTest.h>
+#import "NSString+BoundingSize.h"
 
-@interface NSSet (Ethanol)
-
-+ (instancetype)eth_setWithObjectNumber:(NSUInteger)objectNumber objects:(id)firstObject, ...;
+@interface BoundingSizeTests : XCTestCase
 
 @end
 
-#define ETHSET_(...) \
-  [NSSet eth_setWithObjectNumber:ETH_NARG(__VA_ARGS__) objects:__VA_ARGS__] \
+@implementation BoundingSizeTests
 
-/**
- *  Create a set that allows nil values which will be ignored.
- */
-#define ETHSET(...) ETHSET_(nil, ## __VA_ARGS__)
+- (void)testStringBoundingSize {
+  UIFont * font = [UIFont systemFontOfSize:456];
+  CGRect normalizedFontLineHeight = CGRectIntegral(CGRectMake(0.0, 0.0, 0.0, font.lineHeight));
+  CGSize size = [@"test" eth_boundingSizeWithFont:font];
+  CGRect normalizedRect = CGRectIntegral(CGRectMake(0.0, 0.0, size.width, size.height));
+  XCTAssertEqual(CGRectGetHeight(normalizedRect), CGRectGetHeight(normalizedFontLineHeight));
+}
+
+@end

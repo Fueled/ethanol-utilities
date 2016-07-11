@@ -1,8 +1,8 @@
 //
-//  NSSet+Ethanol.h
-//  EthanolUtilities
+//  NSString+BoundingSize.m
+//  Ethanol
 //
-//  Created by Stephane Copin on 9/2/14.
+//  Created by Stephane Copin on 5/15/14.
 //  Copyright (c) 2014 Fueled Digital Media, LLC.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,18 +24,29 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "NSString+BoundingSize.h"
 
-@interface NSSet (Ethanol)
+@import CoreText;
 
-+ (instancetype)eth_setWithObjectNumber:(NSUInteger)objectNumber objects:(id)firstObject, ...;
+@implementation NSString (BoundingSize)
+
+- (CGSize)eth_boundingSizeWithFont:(UIFont *)font {
+  return [self eth_boundingSizeWithSize:CGSizeMake(COMPUTE_BOUND, COMPUTE_BOUND) font:font];
+}
+
+- (CGSize)eth_boundingSizeWithSize:(CGSize)size font:(UIFont *)font {
+  return [self eth_boundingSizeWithSize:size font:font textAlignment:NSTextAlignmentLeft];
+}
+
+- (CGSize)eth_boundingSizeWithSize:(CGSize)size font:(UIFont *)font textAlignment:(NSTextAlignment)textAlignement {
+  UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, size.width, size.height)];
+  label.numberOfLines = 0;
+  label.text = self;
+  label.font = font;
+  label.textAlignment = textAlignement;
+  label.lineBreakMode = NSLineBreakByWordWrapping;
+  [label sizeToFit];
+  return CGSizeMake(label.frame.size.width, label.frame.size.height);
+}
 
 @end
-
-#define ETHSET_(...) \
-  [NSSet eth_setWithObjectNumber:ETH_NARG(__VA_ARGS__) objects:__VA_ARGS__] \
-
-/**
- *  Create a set that allows nil values which will be ignored.
- */
-#define ETHSET(...) ETHSET_(nil, ## __VA_ARGS__)

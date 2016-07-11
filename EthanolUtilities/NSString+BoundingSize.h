@@ -1,8 +1,8 @@
 //
-//  NSSet+Ethanol.h
-//  EthanolUtilities
+//  NSString+BoundingSize.h
+//  Ethanol
 //
-//  Created by Stephane Copin on 9/2/14.
+//  Created by Stephane Copin on 5/15/14.
 //  Copyright (c) 2014 Fueled Digital Media, LLC.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,18 +24,14 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface NSSet (Ethanol)
+#define COMPUTE_BOUND 0.0f
 
-+ (instancetype)eth_setWithObjectNumber:(NSUInteger)objectNumber objects:(id)firstObject, ...;
+@interface NSString (BoundingSize)
+
+- (CGSize)eth_boundingSizeWithFont:(UIFont *)font;
+- (CGSize)eth_boundingSizeWithSize:(CGSize)eth_size font:(UIFont *)font;
+- (CGSize)eth_boundingSizeWithSize:(CGSize)eth_size font:(UIFont *)font textAlignment:(NSTextAlignment)textAlignement;
 
 @end
-
-#define ETHSET_(...) \
-  [NSSet eth_setWithObjectNumber:ETH_NARG(__VA_ARGS__) objects:__VA_ARGS__] \
-
-/**
- *  Create a set that allows nil values which will be ignored.
- */
-#define ETHSET(...) ETHSET_(nil, ## __VA_ARGS__)

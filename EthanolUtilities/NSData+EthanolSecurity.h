@@ -1,8 +1,8 @@
 //
-//  NSSet+Ethanol.h
-//  EthanolUtilities
+//  NSData+EthanolSecurity.h
+//  Ethanol
 //
-//  Created by Stephane Copin on 9/2/14.
+//  Created by Stephane Copin on 4/14/14.
 //  Copyright (c) 2014 Fueled Digital Media, LLC.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,16 +26,42 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSSet (Ethanol)
-
-+ (instancetype)eth_setWithObjectNumber:(NSUInteger)objectNumber objects:(id)firstObject, ...;
-
-@end
-
-#define ETHSET_(...) \
-  [NSSet eth_setWithObjectNumber:ETH_NARG(__VA_ARGS__) objects:__VA_ARGS__] \
+@interface NSData (EthanolSecurity)
 
 /**
- *  Create a set that allows nil values which will be ignored.
+ Returns an MD2 hash of the given data.
+ @return The MD2 hash string
  */
-#define ETHSET(...) ETHSET_(nil, ## __VA_ARGS__)
+- (NSString *)eth_MD2;
+/**
+ Returns an MD4 hash of the given data.
+ @return The MD4 hash string
+ */
+- (NSString *)eth_MD4;
+/**
+ Returns an MD5 hash of the given data.
+ @return The MD5 hash string
+ */
+- (NSString *)eth_MD5;
+/**
+ Returns an SHA-1 hash of the given data.
+ @return The SHA-1 hash string
+ */
+- (NSString *)eth_SHA1;
+/**
+ Returns an SHA-256 hash of the given data.
+ @return The SHA-256 hash string
+ */
+- (NSString *)eth_SHA256;
+/**
+ Returns an SHA-256 hash of the given data.
+ @return The SHA-256 hash string
+ */
+- (NSString *)eth_SHA384;
+/**
+ Returns an SHA-512 hash of the given data.
+ @return The SHA-512 hash string
+ */
+- (NSString *)eth_SHA512;
+
+@end

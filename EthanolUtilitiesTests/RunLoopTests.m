@@ -1,8 +1,8 @@
 //
-//  NSSet+Ethanol.h
+//  RunLoopTests.m
 //  EthanolUtilities
 //
-//  Created by Stephane Copin on 9/2/14.
+//  Created by Stephane Copin on 8/19/15.
 //  Copyright (c) 2014 Fueled Digital Media, LLC.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,18 +24,44 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import <XCTest/XCTest.h>
+#import "CADisplayLink+EthanolBlocks.h"
+#import "NSTimer+EthanolBlocks.h"
 
-@interface NSSet (Ethanol)
-
-+ (instancetype)eth_setWithObjectNumber:(NSUInteger)objectNumber objects:(id)firstObject, ...;
+@interface RunLoopTests : XCTestCase
 
 @end
 
-#define ETHSET_(...) \
-  [NSSet eth_setWithObjectNumber:ETH_NARG(__VA_ARGS__) objects:__VA_ARGS__] \
+@implementation RunLoopTests
 
-/**
- *  Create a set that allows nil values which will be ignored.
- */
-#define ETHSET(...) ETHSET_(nil, ## __VA_ARGS__)
+- (void)testTimerWithBlock {
+  NSDate *timeoutDate = [NSDate dateWithTimeIntervalSinceNow:0.6];
+  __block BOOL timerFired = NO;
+  
+  [NSTimer eth_scheduledTimerWithTimeInterval:0.5 block:^(NSTimer *timer) {
+    timerFired = YES;
+  }];
+  
+  while(!timerFired && [timeoutDate timeIntervalSinceNow] > 0) {
+    CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0.01, YES);
+  }
+  
+  if(!timerFired) {
+    XCTFail(@"Test timed out");
+  }
+}
+
+- (void)testTimerWithNilBlock {
+  NSDate *timeoutDate = [NSDate dateWithTimeIntervalSinceNow:0.6];
+  __block BOOL timerFired = NO;
+  
+  NSTimer * timer = [NSTimer eth_scheduledTimerWithTimeInterval:0.5 block:nil];
+  
+  while(!timerFired && [timeoutDate timeIntervalSinceNow] > 0) {
+    CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0.01, YES);
+  }
+  
+  XCTAssertFalse(timer.valid);
+}
+
+@end

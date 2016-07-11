@@ -1,8 +1,8 @@
 //
-//  NSSet+Ethanol.h
-//  EthanolUtilities
+//  NSString+EthanolSecurity.m
+//  Ethanol
 //
-//  Created by Stephane Copin on 9/2/14.
+//  Created by Stephane Copin on 3/21/14.
 //  Copyright (c) 2014 Fueled Digital Media, LLC.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,18 +24,23 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import <CommonCrypto/CommonCrypto.h>
+#import "NSData+EthanolSecurity.h"
+#import "NSString+EthanolSecurity.h"
 
-@interface NSSet (Ethanol)
+@implementation NSString (EthanolSecurity)
 
-+ (instancetype)eth_setWithObjectNumber:(NSUInteger)objectNumber objects:(id)firstObject, ...;
+#define IMPLEMENT_SECURITY_METHOD(name) \
+  - (NSString *)eth_ ## name { \
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] eth_ ## name]; \
+  }
+
+IMPLEMENT_SECURITY_METHOD(MD2)
+IMPLEMENT_SECURITY_METHOD(MD4)
+IMPLEMENT_SECURITY_METHOD(MD5)
+IMPLEMENT_SECURITY_METHOD(SHA1)
+IMPLEMENT_SECURITY_METHOD(SHA256)
+IMPLEMENT_SECURITY_METHOD(SHA384)
+IMPLEMENT_SECURITY_METHOD(SHA512)
 
 @end
-
-#define ETHSET_(...) \
-  [NSSet eth_setWithObjectNumber:ETH_NARG(__VA_ARGS__) objects:__VA_ARGS__] \
-
-/**
- *  Create a set that allows nil values which will be ignored.
- */
-#define ETHSET(...) ETHSET_(nil, ## __VA_ARGS__)
