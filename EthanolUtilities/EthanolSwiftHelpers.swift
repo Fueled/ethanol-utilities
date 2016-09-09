@@ -59,8 +59,8 @@ infix operator ~= { precedence 60 }
 infix operator +- { precedence 70 }
 
 // This operator is not made to be used by itself. Please use it with ~= (Syntax is value ~= (compare +- delta))
-public func +-<T: SignedNumberType>(@autoclosure lhs: () -> T, @autoclosure rhs: () -> T)(left: Bool) -> T {
-	return left ? lhs() : rhs()
+public func +-<T: SignedNumberType>(@autoclosure(escaping) lhs: () -> T, @autoclosure(escaping) rhs: () -> T) -> Bool -> T {
+	return { $0 ? lhs() : rhs() }
 }
 
 public func ~=<T: SignedNumberType>(value: T, compareToDelta: (left: Bool) -> T) -> Bool {
