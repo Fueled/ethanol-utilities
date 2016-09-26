@@ -24,9 +24,9 @@
 //  THE SOFTWARE.
 //
 
-extension SequenceType {
-	public func find(predicate: Self.Generator.Element -> Bool) -> Int? {
-		for (idx, element) in self.enumerate() {
+extension Sequence {
+	public func find(_ predicate: (Self.Iterator.Element) -> Bool) -> Int? {
+		for (idx, element) in self.enumerated() {
 			if predicate(element) {
 				return idx
 			}
@@ -36,18 +36,18 @@ extension SequenceType {
 }
 
 extension Array {
-	public func keepRange(range: Range<Int>) -> Array<Element> {
+	public func keepRange(_ range: Range<Int>) -> Array<Element> {
 		var array = self
 		array.keepRangeInPlace(range)
 		return array
 	}
 	
-	public mutating func keepRangeInPlace(range: Range<Int>) {
-		if(range.endIndex < self.endIndex) {
-			self.removeRange(range.endIndex..<self.endIndex);
+	public mutating func keepRangeInPlace(_ range: Range<Int>) {
+		if(range.upperBound < self.endIndex) {
+			self.removeSubrange(self.indices.suffix(from: range.upperBound));
 		}
-		if(range.startIndex > self.startIndex) {
-			self.removeRange(0..<range.startIndex);
+		if(range.lowerBound > self.startIndex) {
+			self.removeSubrange(0..<range.lowerBound);
 		}
 	}
 }
