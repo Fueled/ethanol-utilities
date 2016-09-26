@@ -26,22 +26,18 @@
 
 import Foundation
 
-public func delay(delay: Double, closure: () -> ()) {
-	dispatch_after(
-		dispatch_time(
-			DISPATCH_TIME_NOW,
-			Int64(delay * Double(NSEC_PER_SEC))
-		),
-		dispatch_get_main_queue(), closure)
+public func delay(_ delay: Double, closure: @escaping () -> ()) {
+	DispatchQueue.main.asyncAfter(
+		deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
 }
 
-public func compareWithDelta<T: SignedNumberType>(value: T, compareTo: T, delta: T) -> Bool {
+public func compareWithDelta<T: SignedNumber>(_ value: T, compareTo: T, delta: T) -> Bool {
 	return abs(value - compareTo) < delta
 }
 
-public func compareWithDelta<T where T: SignedNumberType, T: FloatingPointType>(value: T, compareTo: T, delta: T) -> Bool {
+public func compareWithDelta<T>(_ value: T, compareTo: T, delta: T) -> Bool where T: SignedNumber, T: FloatingPoint {
 	if(value.isInfinite && compareTo.isInfinite) {
-		if((value.isSignMinus && !compareTo.isSignMinus) || (!value.isSignMinus && compareTo.isSignMinus)) {
+		if(((value.sign == .minus) && !(compareTo.sign == .minus)) || (!(value.sign == .minus) && (compareTo.sign == .minus))) {
 			return false
 		}
 		return !delta.isInfinite
@@ -55,16 +51,8 @@ public func compareWithDelta<T where T: SignedNumberType, T: FloatingPointType>(
 	return abs(value - compareTo) <= abs(delta)
 }
 
-infix operator ~= { precedence 60 }
-infix operator +- { precedence 70 }
-
-// This operator is not made to be used by itself. Please use it with ~= (Syntax is value ~= (compare +- delta))
-public func +-<T: SignedNumberType>(@autoclosure(escaping) lhs: () -> T, @autoclosure(escaping) rhs: () -> T) -> Bool -> T {
-	return { $0 ? lhs() : rhs() }
-}
-
-public func ~=<T: SignedNumberType>(value: T, compareToDelta: (left: Bool) -> T) -> Bool {
-	let compareTo = compareToDelta(left: true)
-	let delta = compareToDelta(left: false)
+public func ~=<T: SignedNumber>(value: T, compareToDelta: (_ left: Bool) -> T) -> Bool {
+	let compareTo = compareToDelta(true)
+	let delta = compareToDelta(false)
 	return compareWithDelta(value, compareTo: compareTo, delta: delta)
 }
