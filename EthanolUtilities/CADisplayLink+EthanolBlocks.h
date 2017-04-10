@@ -25,7 +25,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "ETHpreprocessorUtils.h"
+#import "ETHPreprocessorUtils.h"
 
 typedef void (^ ETHDisplayLinkTriggeredBlock)(CADisplayLink * displayLink);
 
