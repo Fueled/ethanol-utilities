@@ -33,7 +33,7 @@ infix operator +- { precedence 70 }
 class SwiftTests: XCTestCase {
 	func testFindInSequenceFound() {
 		let array = [1, 2, 3, 42, 6, 7]
-		
+				
 		XCTAssertEqual(array.find({ $0 == 42 }), 3)
 	}
 	
